@@ -4,7 +4,7 @@ const Index :FC  = () => {
   const prefixCls = usePrefixCls('layout-sider-logo')
   return (
     <div className={prefixCls}>
-      LoGO
+      {process.env.REACT_APP_TITLE}
     </div>
   )
 }
