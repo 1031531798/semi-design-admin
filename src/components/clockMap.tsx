@@ -1,10 +1,16 @@
 import React from "react";
 
+type MapProps = {
+  ifUrl: string | undefined
+}
+interface ClockMap {
+  state: MapProps,
+  props: MapProps
+} 
 class ClockMap extends React.Component{
-  constructor(props){
+  constructor(props: MapProps){
     super(props)
-    this.state={
-      list: [],
+    this.state = {
       ifUrl: 'http://192.168.50.150:8081/?mapType=1'
     }
   }
