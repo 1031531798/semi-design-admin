@@ -1,8 +1,7 @@
-import LayoutIndex from './pages/layout'
 import { LocaleProvider } from '@douyinfe/semi-ui'
 import {IntlProvider } from 'react-intl'
 import {localeConfig} from './locales'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter} from 'react-router-dom'
 import {RenderRouter} from './router'
 import './styles/common.scss'
 

@@ -37,7 +37,7 @@ return (
 				selectedKeys={selectedKeys}
         onSelect={selectMenu}
         header={{
-          logo: <img src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/webcast_logo.svg" />,
+          logo: <img src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/webcast_logo.svg" alt='logo' />,
           text: process.env.REACT_APP_TITLE
         }}
         items={getMenu}

@@ -1,7 +1,11 @@
 export const zhCN_menu = {
   'web.menu.user': '用户管理',
-	'web.menu.labor': '工会中心',
-	'web.menu.task': '任务中心',
-	'web.menu.task.manage': '任务管理',
-	'web.menu.task.search': '任务查询',
+	'web.menu.dashboard': 'Dashboard',
+	'web.menu.dashboard.workbench': '工作台',
+	'web.menu.dashboard.analyse': '分析页',
+	'web.menu.page': '页面',
+	'web.menu.page.form': '表单页',
+	'web.menu.page.detail': '详情页',
+	'web.menu.page.result': '结果页',
+	'web.menu.page.error': '异常页',
 }
