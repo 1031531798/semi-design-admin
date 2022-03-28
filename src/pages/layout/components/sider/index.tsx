@@ -13,13 +13,13 @@ const Index: FC = () => {
   const { setCache, getCache } = useCache()
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
   const [openKeys, setOpenKeys] = useState<string[]>([])
+  // 使用缓存数据
   useEffect(() => {
     const defaultKeys = getCache({ key: 'MENU_SELECT_KEYS', storage: sessionStorage })
     const defaultOpens = getCache({ key: 'MENU_OPEN_KEYS', storage: sessionStorage })
     if (Array.isArray(defaultKeys)) {
       setSelectedKeys(defaultKeys)
     }
-    console.log(defaultOpens)
     if (Array.isArray(defaultOpens)) {
       setOpenKeys(defaultOpens)
     }
@@ -30,11 +30,12 @@ const Index: FC = () => {
     return setMenuText(menuList)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuList])
-
+  // 菜单名国际化
   function setMenuText(list: MenuItem[]): MenuItem[] {
     return list.map((menu: MenuItem) => {
       return {
         ...menu,
+        icon: menu.icon ? renderIcon(menu.icon) : null,
         text: formatMessage({ id: menu.text }),
         items: menu.items ? setMenuText(menu.items) : []
       }
@@ -52,30 +53,36 @@ const Index: FC = () => {
     // 跳转菜单路由
     navigate(data.selectedItems[0].path)
   }
-
+  function renderIcon(icon: any) {
+    if (!icon) {
+      return null
+    }
+    return icon.render()
+  }
   // 设置下拉展开
   const onOpenChange = (data: any) => {
-		setOpenKeys([...data.openKeys])
+    setOpenKeys([...data.openKeys])
     setCache({
       key: 'MENU_OPEN_KEYS',
       value: [...data.openKeys],
       storage: sessionStorage,
     })
-	}
+  }
 
   return (
     <Sider className={prefixCls}>
       <Nav
         defaultOpenKeys={['001']}
         style={{ height: '100%' }}
-				openKeys={openKeys}
+        openKeys={openKeys}
         selectedKeys={selectedKeys}
-				onOpenChange={onOpenChange}
+        onOpenChange={onOpenChange}
         onSelect={selectMenu}
         header={{
           logo: <img src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/webcast_logo.svg" alt='logo' />,
           text: process.env.REACT_APP_TITLE
         }}
+        limitIndent={false}
         items={getMenu}
         footer={{
           collapseButton: true,
