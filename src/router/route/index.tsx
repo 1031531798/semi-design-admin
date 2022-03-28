@@ -3,6 +3,8 @@ import { RouteObject, RouteProps } from 'react-router';
 import LayoutIndex from '../../pages/layout/index';
 import DisposeRoute from './disposeRoute';
 
+const Workbench = lazy(() => import('src/views/dashboard/workbench'))
+const Analyse = lazy(() => import('src/views/dashboard/analyse'))
 const UserView = lazy(() => import('src/views/user/index'))
 const PageForm = lazy(() => import('src/views/pages/form'))
 const PageDetail = lazy(() => import('src/views/pages/detail'))
@@ -21,6 +23,14 @@ export const routeList: RouteObject[] = [
 		path: '/',
 		element: <DisposeRoute element={<LayoutIndex />} titleId="home" auth />,
 		children: [
+			{
+				path: '/workbench',
+				element: <DisposeRoute element={<Workbench />} titleId="Workbench" auth />,
+			},
+			{
+				path: '/analyse',
+				element: <DisposeRoute element={<Analyse />} titleId="Analyse" auth />,
+			},
 			{
 				path: '/user',
 				element: <DisposeRoute element={<UserView />} titleId="user" auth />,

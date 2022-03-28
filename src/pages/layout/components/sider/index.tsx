@@ -1,40 +1,76 @@
-import { FC, useMemo, useState } from 'react'
-import { Layout, Nav } from '@douyinfe/semi-ui' 
+import { FC, useEffect, useMemo, useState } from 'react'
+import { Layout, Nav } from '@douyinfe/semi-ui'
 import { usePrefixCls } from 'src/hook/useConfig';
 import { useLocale } from '../../../../locales/index';
 import { menuList, MenuItem } from './data';
 import { useNavigate } from 'react-router-dom';
-const {Sider} = Layout
+import useCache from '../../../../hook/useCache';
+const { Sider } = Layout
 
-const Index :FC  = () => {
-const prefixCls = usePrefixCls('layout-sider')
-const [selectedKeys, setSelectedKeys] = useState<string[]>([])
-const navigate = useNavigate()
-const {formatMessage} = useLocale()
-const getMenu = useMemo(() => {
-  return setMenuText(menuList)
-}, [menuList])
+const Index: FC = () => {
+  const prefixCls = usePrefixCls('layout-sider')
 
-function setMenuText (list: MenuItem[]):MenuItem[] {
-  return list.map((menu: MenuItem) => {
-    return {
-      ...menu,
-      text: formatMessage({id: menu.text}),
-      items: menu.items ? setMenuText(menu.items) : []
+  const { setCache, getCache } = useCache()
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([])
+  const [openKeys, setOpenKeys] = useState<string[]>([])
+  useEffect(() => {
+    const defaultKeys = getCache({ key: 'MENU_SELECT_KEYS', storage: sessionStorage })
+    const defaultOpens = getCache({ key: 'MENU_OPEN_KEYS', storage: sessionStorage })
+    if (Array.isArray(defaultKeys)) {
+      setSelectedKeys(defaultKeys)
     }
-  })
-}
-function selectMenu (data: any) {
-  setSelectedKeys([...data.selectedKeys])
-  navigate(data.selectedItems[0].path)
-}
+    console.log(defaultOpens)
+    if (Array.isArray(defaultOpens)) {
+      setOpenKeys(defaultOpens)
+    }
+  }, [getCache])
+  const navigate = useNavigate()
+  const { formatMessage } = useLocale()
+  const getMenu = useMemo(() => {
+    return setMenuText(menuList)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [menuList])
 
-return (
+  function setMenuText(list: MenuItem[]): MenuItem[] {
+    return list.map((menu: MenuItem) => {
+      return {
+        ...menu,
+        text: formatMessage({ id: menu.text }),
+        items: menu.items ? setMenuText(menu.items) : []
+      }
+    })
+  }
+  // 点击菜单
+  function selectMenu(data: any) {
+    // 设置选中菜单
+    setSelectedKeys([...data.selectedKeys])
+    setCache({
+      key: 'MENU_SELECT_KEYS',
+      value: [...data.selectedKeys],
+      storage: sessionStorage,
+    })
+    // 跳转菜单路由
+    navigate(data.selectedItems[0].path)
+  }
+
+  // 设置下拉展开
+  const onOpenChange = (data: any) => {
+		setOpenKeys([...data.openKeys])
+    setCache({
+      key: 'MENU_OPEN_KEYS',
+      value: [...data.openKeys],
+      storage: sessionStorage,
+    })
+	}
+
+  return (
     <Sider className={prefixCls}>
       <Nav
         defaultOpenKeys={['001']}
         style={{ height: '100%' }}
-				selectedKeys={selectedKeys}
+				openKeys={openKeys}
+        selectedKeys={selectedKeys}
+				onOpenChange={onOpenChange}
         onSelect={selectMenu}
         header={{
           logo: <img src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/webcast_logo.svg" alt='logo' />,
