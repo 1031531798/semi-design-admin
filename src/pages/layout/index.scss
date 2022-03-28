@@ -1,6 +1,10 @@
 .#{$--prefixcls}-layout {
   width: 100%;
   height: 100%;
+  &-header{
+    width: 100%;
+    height: 60px;
+  }
   &-sider {
     display: flex;
     flex-direction: column;

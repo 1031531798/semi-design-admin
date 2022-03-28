@@ -24,7 +24,7 @@ function setMenuText (list: MenuItem[]):MenuItem[] {
 return (
     <Sider className={prefixCls}>
       <Nav
-        defaultOpenKeys={['job']}
+        defaultOpenKeys={['001']}
         style={{ height: '100%' }}
         header={{
           logo: <img src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/webcast_logo.svg" />,

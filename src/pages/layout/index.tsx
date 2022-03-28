@@ -1,10 +1,12 @@
 import React from "react";
-import Header from './components/footer'
+import Header from './components/header'
 import Sider from './components/sider'
 import Footer from './components/footer'
 import { Layout } from '@douyinfe/semi-ui';
 import { usePrefixCls } from "src/hook/useConfig";
+import { Outlet } from "react-router-dom";
 import './index.scss'
+
 const { Content } = Layout
 const LayoutIndex: React.FC = () => {
   const prefixCls = usePrefixCls('layout')
@@ -14,9 +16,7 @@ const LayoutIndex: React.FC = () => {
 			<Layout>
 				<Header />
 				<Content className="layout-content">
-					{/* <Suspense fallback={<SuspendFallbackLoading message="正在加载中" />}>
-						<Outlet />
-					</Suspense> */}
+					<Outlet />
 				</Content>
 				<Footer />
 			</Layout>
