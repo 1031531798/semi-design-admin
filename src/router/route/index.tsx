@@ -22,6 +22,7 @@ export const routeList: RouteObject[] = [
 	{
 		path: '/',
 		element: <DisposeRoute element={<LayoutIndex />} titleId="home" auth />,
+		
 		children: [
 			{
 				path: '/workbench',

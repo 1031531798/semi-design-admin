@@ -4,6 +4,7 @@ const webSettings: webConfig = {
   menuSetting: {
     width: 250
   },
+  defaultRouter: '/workbench'
 }
 const cacheSettings: cacheProps = {
   cacheCipher: {

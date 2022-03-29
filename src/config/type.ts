@@ -1,6 +1,7 @@
 export interface webConfig {
   prefixCls: string | undefined;
   menuSetting: MenuConfig,
+  defaultRouter: string
 }
 
 export type MenuConfig =  {

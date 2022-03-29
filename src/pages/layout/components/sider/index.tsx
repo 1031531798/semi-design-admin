@@ -3,13 +3,13 @@ import { Layout, Nav } from '@douyinfe/semi-ui'
 import { usePrefixCls } from 'src/hook/useConfig';
 import { useLocale } from '../../../../locales/index';
 import { menuList, MenuItem } from './data';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useCache from '../../../../hook/useCache';
 const { Sider } = Layout
 
 const Index: FC = () => {
   const prefixCls = usePrefixCls('layout-sider')
-
+  const { pathname } = useLocation()
   const { setCache, getCache } = useCache()
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
   const [openKeys, setOpenKeys] = useState<string[]>([])
@@ -17,13 +17,19 @@ const Index: FC = () => {
   useEffect(() => {
     const defaultKeys = getCache({ key: 'MENU_SELECT_KEYS', storage: sessionStorage })
     const defaultOpens = getCache({ key: 'MENU_OPEN_KEYS', storage: sessionStorage })
+    // 当前页面路由参数
+    const currentRouter = findMenuByPath(menuList, pathname, [])
     if (Array.isArray(defaultKeys)) {
       setSelectedKeys(defaultKeys)
+    }else {
+      setSelectedKeys(currentRouter.slice(-1))
     }
     if (Array.isArray(defaultOpens)) {
       setOpenKeys(defaultOpens)
+    }else {
+      setOpenKeys(currentRouter)
     }
-  }, [getCache])
+  }, [])
   const navigate = useNavigate()
   const { formatMessage } = useLocale()
   const getMenu = useMemo(() => {
@@ -52,6 +58,22 @@ const Index: FC = () => {
     })
     // 跳转菜单路由
     navigate(data.selectedItems[0].path)
+  }
+  // 根据path 获取menu
+  function findMenuByPath(menus: MenuItem[], path: string, keys: any[]): any {
+    for (const menu of menus) {
+      if (menu.path === path) {
+        return [...keys, menu.itemKey]
+      }
+      if (menu.items && menu.items.length > 0) {
+        const result = findMenuByPath(menu.items, path, [...keys, menu.itemKey])
+        if (result.length === 0) {
+          continue
+        }
+        return result
+      }
+    }
+    return []
   }
   function renderIcon(icon: any) {
     if (!icon) {
