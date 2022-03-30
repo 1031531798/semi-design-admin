@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Layout } from '@douyinfe/semi-ui'
 import { Nav, Avatar, Dropdown } from '@douyinfe/semi-ui';
 import { usePrefixCls } from '../../../../hook/useConfig';
+import HeaderNav from './headNav'
 
 const { Header } = Layout
 const Index: FC = () => {
@@ -13,6 +14,7 @@ const Index: FC = () => {
           width: '100%'
         }}
         mode={'horizontal'}
+        header={<HeaderNav></HeaderNav>}
         footer={
           <Dropdown
             position="bottomRight"

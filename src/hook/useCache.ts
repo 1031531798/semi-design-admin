@@ -3,14 +3,14 @@ import { CacheConfig, createStorage } from '../utils/cache';
 
 
 
-function getCache(config: CacheConfig) {
+export function getCache(config: CacheConfig) {
   const { key} = config
   if (isString(key)) {
     return createStorage(config).get(key)
   }
 }
 
-function setCache(config: CacheConfig) {
+export function setCache(config: CacheConfig) {
   const { key, value} = config
   if (isString(key)) {
     createStorage(config).set(key, value)
