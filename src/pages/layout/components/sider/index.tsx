@@ -20,6 +20,7 @@ const Index: FC = () => {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
   const [openKeys, setOpenKeys] = useState<string[]>([])
   const setOpenRouter = useStore(state => state.setOpenRouter)
+  const localeMode = useStore(state => state.localeMode)
   // 使用缓存数据
   useEffect(() => {
     const defaultKeys = getCache({ key: 'MENU_SELECT_KEYS', storage: sessionStorage })
@@ -43,7 +44,7 @@ const Index: FC = () => {
   const getMenu = useMemo(() => {
     return setMenuText(menuList)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [menuList])
+  }, [menuList, localeMode])
   // 菜单名国际化
   function setMenuText(list: MenuItem[]): MenuItem[] {
     return list.map((menu: MenuItem) => {
