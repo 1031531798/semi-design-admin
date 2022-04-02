@@ -38,6 +38,7 @@ const Index: FC = () => {
     setColorMode(mode)
     setMode(mode)
   }
+
   function setSemiColorMode () {
     const body = document.body;
     if (colorMode === ColorModeType.dark) {

@@ -5,7 +5,6 @@ import { webSettings } from 'src/config/setting';
 export function useColorMode() {
   const {getCache, setCache } = useCache()
   function setMode(colorMode: ColorModeType) {
-    console.log('setMode', colorMode)
     setCache({
       key: CacheEnum.colorMode,
       value: colorMode,
