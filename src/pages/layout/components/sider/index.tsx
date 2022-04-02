@@ -6,6 +6,7 @@ import { menuList, MenuItem } from './data';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCache from '../../../../hook/useCache';
 import useStore from 'src/store';
+import { openMenuItem } from '../../../../store/index';
 const { Sider } = Layout
 interface PathFindProps {
   menus: any[],
@@ -58,7 +59,7 @@ const Index: FC = () => {
   }
   // 设置面包屑数据
   function setBreadcrumb (path: string) {
-    const menuTree: MenuItem[] = findMenuByPath({
+    const menuTree: openMenuItem[] = findMenuByPath({
       menus: menuList,
       path,
     }).map((item: MenuItem) => {

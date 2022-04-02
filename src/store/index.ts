@@ -1,5 +1,6 @@
 import create from 'zustand'
 import { setCache, getCache } from '../hook/useCache';
+import { CacheEnum } from '../enum/cache';
 
 export interface openMenuItem {
   path: string,
@@ -10,26 +11,26 @@ interface StoreState {
   localeMode: string,
   menuFold: boolean,
   openRouterList: openMenuItem[],
-  setOpenRouter: Function,
-  setLocaleMode: Function
+  setOpenRouter: (t: openMenuItem[]) => void,
+  setLocaleMode: (mode: string) => void,
 }
 
 const useStore = create<StoreState>((set) => ({
   menuFold: false,
   localeMode: 'zh_CN',
   openRouterList: getCache({
-    key: 'OPEN_ROUTER_LIST',
+    key: CacheEnum.openRouteList,
     storage: sessionStorage
   }) || [],
   setLocaleMode: (mode: string) => set(() => ({ localeMode: mode })),
   changeMenuFold: () => set((state: StoreState) => ({ menuFold: !state.menuFold })),
   setOpenRouter: (pathList: openMenuItem[]) => {
     setCache({
-      key: 'OPEN_ROUTER_LIST',
+      key: CacheEnum.openRouteList,
       value: pathList,
       storage: sessionStorage
     })
-    return set((state: StoreState) => (
+    return set(() => (
       {
         openRouterList: pathList
       }

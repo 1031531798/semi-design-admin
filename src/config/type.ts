@@ -1,7 +1,8 @@
 export interface webConfig {
   prefixCls: string | undefined;
   menuSetting: MenuConfig,
-  defaultRouter: string
+  defaultRouter: string,
+  colorMode: ColorModeType
 }
 
 export type MenuConfig =  {
@@ -10,4 +11,8 @@ export type MenuConfig =  {
 export interface cacheProps {
   cacheCipher: {key: string; iv: string},
   cacheTimeOut: number
+}
+export enum ColorModeType {
+  light = 'light',
+  dark = 'dark'
 }

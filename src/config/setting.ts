@@ -1,9 +1,10 @@
-import { webConfig, cacheProps } from './type';
+import { webConfig, cacheProps, ColorModeType } from './type';
 const webSettings: webConfig = {
   prefixCls: process.env.REACT_APP_PREFIXCLS,
   menuSetting: {
     width: 250
   },
+  colorMode: ColorModeType.light,
   defaultRouter: '/workbench'
 }
 const cacheSettings: cacheProps = {

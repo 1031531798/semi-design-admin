@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC } from 'react';
 import { usePrefixCls } from 'src/hook/useConfig';
 import { Breadcrumb } from '@douyinfe/semi-ui';
 import useStore from 'src/store';
@@ -9,9 +9,6 @@ const Index: FC = () => {
   const prefixCls = usePrefixCls('header-breadcrumb')
   const openRouterList = useStore(state => state.openRouterList)
   const { formatMessage } = useLocale()
-  console.log(openRouterList)
-  useMemo(() => {
-  }, [openRouterList])
 
   function renderBreadcrumbItem () {
     const breadcrumbList = openRouterList.map((item: openMenuItem) => {
