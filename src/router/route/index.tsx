@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import { RouteObject, RouteProps } from 'react-router';
 import LayoutIndex from '../../pages/layout/index';
 import DisposeRoute from './disposeRoute';
+import { Empty } from '@douyinfe/semi-ui';
 
 const Workbench = lazy(() => import('src/views/dashboard/workbench'))
 const Analyse = lazy(() => import('src/views/dashboard/analyse'))
@@ -50,6 +51,15 @@ export const routeList: RouteObject[] = [
 			{
 				path: '/pages/error',
 				element: <DisposeRoute element={<PageException />} titleId="PageException" auth />,
+			},
+			{
+				path: '*',
+				element: (
+					<DisposeRoute
+						element={<Empty title="找不到咯" description="这里什么也没有~" />}
+						titleId="404"
+					/>
+				)
 			}
 		]
 	}

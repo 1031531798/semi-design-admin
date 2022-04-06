@@ -21,7 +21,6 @@ class ClockMap extends React.Component{
     })
   }
   showLand = () => {
-    console.log('显示陆地')
     this.setState({
       ifUrl: 'http://192.168.50.150:8081/?mapType=2'
     })

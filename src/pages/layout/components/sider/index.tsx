@@ -6,38 +6,21 @@ import { menuList, MenuItem } from './data';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCache from '../../../../hook/useCache';
 import useStore from 'src/store';
-import { openMenuItem } from '../../../../store/index';
+import { findMenuByPath } from '../../../../utils/utils';
 const { Sider } = Layout
-interface PathFindProps {
-  menus: any[],
-  path: string,
-  keys?: string[]
-  field?: string,
-}
+
 const Index: FC = () => {
   const prefixCls = usePrefixCls('layout-sider')
   const { pathname } = useLocation()
-  const { setCache, getCache } = useCache()
-  const [selectedKeys, setSelectedKeys] = useState<string[]>([])
-  const [openKeys, setOpenKeys] = useState<string[]>([])
+  const { setCache } = useCache()
+  const [selectedKeys, setSelectedKeys] = useState<string[]>(useStore(state => state.openMenuBar))
+  const [openKeys, setOpenKeys] = useState<string[]>(useStore(state => state.selectMenuBar))
   const setOpenRouter = useStore(state => state.setOpenRouter)
   const localeMode = useStore(state => state.localeMode)
+  console.log('选中的菜单为', selectedKeys)
   // 使用缓存数据
   useEffect(() => {
-    const defaultKeys = getCache({ key: 'MENU_SELECT_KEYS', storage: sessionStorage })
-    const defaultOpens = getCache({ key: 'MENU_OPEN_KEYS', storage: sessionStorage })
     // 当前页面路由参数
-    const currentRouter = findMenuFieldByPath({ menus: menuList, path: pathname, field: 'itemKey', keys: [] })
-    if (Array.isArray(defaultKeys)) {
-      setSelectedKeys(defaultKeys)
-    } else {
-      setSelectedKeys(currentRouter.slice(-1))
-    }
-    if (Array.isArray(defaultOpens)) {
-      setOpenKeys(defaultOpens)
-    } else {
-      setOpenKeys(currentRouter)
-    }
     setBreadcrumb(pathname)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -60,11 +43,10 @@ const Index: FC = () => {
   }
   // 设置面包屑数据
   function setBreadcrumb (path: string) {
-    const menuTree: openMenuItem[] = findMenuByPath({
+    const menuTree: MenuItem[] = findMenuByPath({
       menus: menuList,
       path,
     }).map((item: MenuItem) => {
-      console.log(item)
       return {
         itemKey: item.itemKey,
         path: item.path,
@@ -87,40 +69,7 @@ const Index: FC = () => {
     // 跳转菜单路由
     navigate(path)
   }
-  // 根据path 获取menu对象
-  function findMenuByPath(config: PathFindProps): any {
-    const { menus, keys = [], path } = config
-    for (const menu of menus) {
-      if (menu.path === path) {
-        return [...keys, menu]
-      }
-      if (menu.items && menu.items.length > 0) {
-        const result = findMenuByPath({ menus: menu.items, path, keys: [...keys, menu] })
-        if (result.length === 0) {
-          continue
-        }
-        return result
-      }
-    }
-    return []
-  }
-  // 根据path 获取menu field
-  function findMenuFieldByPath(config: PathFindProps): any {
-    const { menus, keys = [], path, field = 'itemKey' } = config
-    for (const menu of menus) {
-      if (menu.path === path) {
-        return [...keys, menu[field]]
-      }
-      if (menu.items && menu.items.length > 0) {
-        const result = findMenuFieldByPath({ menus: menu.items, path, field, keys: [...keys, menu[field]] })
-        if (result.length === 0) {
-          continue
-        }
-        return result
-      }
-    }
-    return []
-  }
+  
   function renderIcon(icon: any) {
     if (!icon) {
       return null

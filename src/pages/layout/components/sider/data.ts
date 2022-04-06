@@ -27,5 +27,5 @@ export const menuList: MenuItem[] = [
       { itemKey: '304', text: 'web.menu.page.error', icon: IconUploadError, path: '/pages/error' },
     ]
   },
-  { itemKey: '2', text: 'web.menu.user', icon: IconUserSetting, path: 'user' }
+  { itemKey: '2', text: 'web.menu.user', icon: IconUserSetting, path: '/user' }
 ]

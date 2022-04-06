@@ -1,4 +1,4 @@
-import React, {Suspense } from "react";
+import React, { Suspense } from "react";
 import Header from './components/header'
 import Sider from './components/sider'
 import Footer from './components/footer'
@@ -10,7 +10,7 @@ import './index.scss'
 
 const { Content } = Layout
 const LayoutIndex: React.FC = () => {
-  const prefixCls = usePrefixCls('layout')
+	const prefixCls = usePrefixCls('layout')
 	return (
 		<Layout className={prefixCls}>
 			<Sider />

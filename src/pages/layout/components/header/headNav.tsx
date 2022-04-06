@@ -3,7 +3,7 @@ import { usePrefixCls } from 'src/hook/useConfig';
 import { Breadcrumb } from '@douyinfe/semi-ui';
 import useStore from 'src/store';
 import { useLocale } from '../../../../locales/index';
-import { openMenuItem } from '../../../../store/index';
+import { MenuItem } from 'src/pages/layout/components/sider/data';
 
 const Index: FC = () => {
   const prefixCls = usePrefixCls('header-breadcrumb')
@@ -11,9 +11,8 @@ const Index: FC = () => {
   const { formatMessage } = useLocale()
 
   function renderBreadcrumbItem () {
-    console.log(openRouterList)
     if (Array.isArray(openRouterList)) {
-      const breadcrumbList = openRouterList.map((item: openMenuItem) => {
+      const breadcrumbList = openRouterList.map((item: MenuItem) => {
         return <Breadcrumb.Item key={item.itemKey}>{formatMessage({id: item.text})}</Breadcrumb.Item>
       })
       return breadcrumbList

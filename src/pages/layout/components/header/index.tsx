@@ -25,7 +25,6 @@ const Index: FC = () => {
     setSemiColorMode()
   })
   const getModeIcon = useMemo(() => {
-    console.log(colorMode)
     return colorMode === ColorModeType.light ? <IconMoon /> : <IconSun />
   }, [colorMode])
 
