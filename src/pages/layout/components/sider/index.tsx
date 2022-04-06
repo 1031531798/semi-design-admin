@@ -38,6 +38,7 @@ const Index: FC = () => {
     } else {
       setOpenKeys(currentRouter)
     }
+    setBreadcrumb(pathname)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const navigate = useNavigate()
@@ -63,6 +64,7 @@ const Index: FC = () => {
       menus: menuList,
       path,
     }).map((item: MenuItem) => {
+      console.log(item)
       return {
         itemKey: item.itemKey,
         path: item.path,

@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -20,15 +19,14 @@ ReactDOM.render(
 reportWebVitals();
 
 // 设置跟随浏览器主题
-const mql = window.matchMedia('(prefers-color-scheme: dark)');
+const mql: MediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
 matchMode(mql)
-function matchMode(e: any) {
+function matchMode(e: {matches: boolean, media: string}) {
   const body = document.body;
-  let colorMode = ColorModeType.light
+  let colorMode = e.matches ? ColorModeType.dark : ColorModeType.light
   if (e.matches) {
     if (!body.hasAttribute('theme-mode')) {
       body.setAttribute('theme-mode', 'dark');
-      colorMode = ColorModeType.dark
     }
   } else {
     if (body.hasAttribute('theme-mode')) {
