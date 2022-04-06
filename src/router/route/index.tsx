@@ -2,7 +2,6 @@ import { lazy } from 'react';
 import { RouteObject, RouteProps } from 'react-router';
 import LayoutIndex from '../../pages/layout/index';
 import DisposeRoute from './disposeRoute';
-import { Empty } from '@douyinfe/semi-ui';
 
 const Workbench = lazy(() => import('src/views/dashboard/workbench'))
 const Analyse = lazy(() => import('src/views/dashboard/analyse'))
@@ -11,6 +10,7 @@ const PageForm = lazy(() => import('src/views/pages/form'))
 const PageDetail = lazy(() => import('src/views/pages/detail'))
 const PageResult = lazy(() => import('src/views/pages/result'))
 const PageException = lazy(() => import('src/views/pages/exception'))
+const Inexistence = lazy(() => import('src/pages/404'))
 
 
 export interface WrapperRouteProps extends RouteProps {
@@ -56,7 +56,7 @@ export const routeList: RouteObject[] = [
 				path: '*',
 				element: (
 					<DisposeRoute
-						element={<Empty title="找不到咯" description="这里什么也没有~" />}
+						element={<Inexistence/>}
 						titleId="404"
 					/>
 				)

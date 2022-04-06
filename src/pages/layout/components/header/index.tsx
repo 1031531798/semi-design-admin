@@ -4,7 +4,6 @@ import { IconLanguage, IconMoon, IconSun } from '@douyinfe/semi-icons';
 import { usePrefixCls } from '../../../../hook/useConfig';
 import HeaderNav from './headNav'
 import useStore from 'src/store';
-import { useColorMode } from '../../../../hook/useMode';
 import { ColorModeType } from '../../../../config/type';
 import { isString } from '../../../../utils/is';
 import { useLocale } from '../../../../locales/index';
@@ -13,14 +12,14 @@ const { Header } = Layout
 const Index: FC = () => {
   const prefixCls = usePrefixCls('layout-header')
   const setLocaleMode = useStore(state => state.setLocaleMode)
+  const setMode = useStore(state => state.setColorMode)
   function changeLocale(value: string | number | any[] | Record<string, any> | undefined) {
     if (isString(value)) {
       setLocaleMode(value)
     }
   }
   const { formatMessage } = useLocale()
-  const { mode, setMode } = useColorMode()
-  const [colorMode, setColorMode] = useState(mode)
+  const [colorMode, setColorMode] = useState(useStore(state => state.colorMode))
   useEffect(() => {
     setSemiColorMode()
   })
