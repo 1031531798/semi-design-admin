@@ -8,22 +8,24 @@ import { findMenuByPath } from '../../utils/utils';
 const GuardRoute: FC<any> = (props) => {
   const setOpenMenu = useStore(state => state.setOpenMenuBar)
   const setSelectMenuBar = useStore(state => state.setSelectMenuBar)
-	const { pathname } = useLocation()
+  
+  const { pathname } = useLocation()
   const menuKey = findMenuByPath({
     menus: menuList,
     path: pathname,
     field: 'itemKey'
   })
-  console.log(menuKey)
+  console.log(props)
   setOpenMenu(menuKey.map(item => item.itemKey))
   setSelectMenuBar(menuKey.map(item => item.itemKey))
+  
   const isUser = true
   return isUser ? (
     pathname === '/' ? (
-			<Navigate to={{ pathname: `/workbench` }} replace />
-		) : (
-			props.element
-		)
+      <Navigate to={{ pathname: `/workbench` }} replace />
+    ) : (
+      props.element
+    )
   ) : (<Empty title="没有权限" description="您还没有登录，请先去登录" />)
 }
 

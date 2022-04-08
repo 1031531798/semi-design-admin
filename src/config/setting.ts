@@ -5,7 +5,10 @@ const webSettings: webConfig = {
     width: 250
   },
   colorMode: ColorModeType.light,
-  defaultRouter: '/workbench'
+  defaultRouter: '/workbench',
+  defaultTabs: [{
+    tab: '工作台', itemKey: '/workbench'
+  }]
 }
 const cacheSettings: cacheProps = {
   cacheCipher: {

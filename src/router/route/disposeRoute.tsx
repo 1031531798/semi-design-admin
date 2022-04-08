@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { RouteProps } from 'react-router'
 import GuardRoute from './guardRoute';
+import useStore from 'src/store';
+import { useLocation } from 'react-router-dom';
 interface DisposeRouteProps extends RouteProps {
   titleId: string,
   auth?: boolean
@@ -8,12 +10,33 @@ interface DisposeRouteProps extends RouteProps {
 const getComponent = (props: any) => {
 	return props.element
 }
+// 过滤的不需要显示tabs的路由
+const tabsFilter = [
+	'home'
+]
 const DisposeRoute: FC<DisposeRouteProps> = ({ titleId, auth, ...props }) => {
+  const { pathname } = useLocation()
+	const tabList = useStore(state => state.tabList)
+  const setTabList = useStore(state => state.setTabList)
 	const RouteComponents = auth ? GuardRoute : getComponent
 	if (titleId) {
 		document.title = titleId
 	}
-	return <RouteComponents {...props} />
+	// 根据titleId过滤不需要的路由
+	if (!tabsFilter.includes(titleId)) {
+		// 设置tabs
+		tabList.findIndex(item => {
+			return item.itemKey === pathname
+		}) < 0 && (
+			setTabList([...tabList, {
+				itemKey: pathname,
+				tab: titleId,
+				closable: true
+			}])
+		)
+	}
+	console.log('titleId', titleId)
+	return <RouteComponents {...props} titleId={titleId} />
 }
 
 export default DisposeRoute

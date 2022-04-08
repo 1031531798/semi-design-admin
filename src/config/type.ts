@@ -1,8 +1,10 @@
+import { TabProps } from '../store/type';
 export interface webConfig {
   prefixCls: string | undefined;
   menuSetting: MenuConfig,
   defaultRouter: string,
-  colorMode: ColorModeType
+  colorMode: ColorModeType,
+  defaultTabs: TabProps[]
 }
 
 export type MenuConfig =  {

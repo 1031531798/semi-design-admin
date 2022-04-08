@@ -1,14 +1,25 @@
 .#{$--prefixcls}-layout {
   width: 100%;
   height: 100%;
-  &-header{
+  background-color: var(--semi-color-bg-1);
+
+  &-header {
     width: 100%;
-    height: 60px;
+
+    .semi-navigation-horizontal {
+      border-bottom: 0px;
+    }
+
+    .semi-tabs {
+      margin-left: 10px;
+    }
   }
+
   &-sider {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     &-logo {
       display: flex;
       flex-direction: row;
@@ -19,17 +30,19 @@
       font-weight: bold;
     }
   }
-  &-content{
+
+  &-content {
     padding: 10px;
-    background-color: var(--semi-color-bg-1);
   }
-  &-404{
+
+  &-404 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
+
     img {
       width: 600px;
     }

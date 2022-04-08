@@ -4,6 +4,7 @@ import { CacheEnum } from '../enum/cache';
 import { MenuItem } from 'src/pages/layout/components/sider/data';
 import { ColorModeType } from 'src/config/type';
 import { webSettings } from 'src/config/setting';
+import { TabProps } from './type';
 
 export interface openMenuItem {
   path: string,
@@ -17,6 +18,8 @@ interface StoreState {
   openMenuBar: string[];
   selectMenuBar: string[];
   colorMode: ColorModeType;
+  tabList: TabProps[];
+  setTabList: (tabs: TabProps[]) => void;
   setColorMode: (mode: ColorModeType) => void;
   setOpenMenuBar: (menu: string[]) => void,
   setSelectMenuBar: (menu: string[]) => void,
@@ -45,6 +48,23 @@ const useStore = create<StoreState>((set) => ({
     return set(() => (
       {
         openRouterList: pathList
+      }
+    ))
+  },
+  // tab标签栏数据
+  tabList: getCache({
+    key: CacheEnum.tabs,
+    storage: sessionStorage
+  }) || webSettings.defaultTabs,
+  setTabList: (tabs: TabProps[]) => {
+    setCache({
+      key: CacheEnum.tabs,
+      value: tabs,
+      storage: sessionStorage
+    })
+    return set(() => (
+      {
+        tabList: tabs
       }
     ))
   },

@@ -3,6 +3,7 @@ import { Nav, Avatar, Dropdown, Select, Layout, Button, Tooltip } from '@douyinf
 import { IconLanguage, IconMoon, IconSun } from '@douyinfe/semi-icons';
 import { usePrefixCls } from '../../../../hook/useConfig';
 import HeaderNav from './headNav'
+import Tabs from './tabs'
 import useStore from 'src/store';
 import { ColorModeType } from '../../../../config/type';
 import { isString } from '../../../../utils/is';
@@ -45,6 +46,8 @@ const Index: FC = () => {
       body.removeAttribute('theme-mode');
     }
   }
+
+
   return (
     <Header className={prefixCls}>
       <Nav
@@ -77,7 +80,7 @@ const Index: FC = () => {
           </>
         }
       ></Nav>
-
+      <Tabs></Tabs>
     </Header>
   )
 }
