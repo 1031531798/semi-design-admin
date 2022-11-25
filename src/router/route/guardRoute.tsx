@@ -15,7 +15,6 @@ const GuardRoute: FC<any> = (props) => {
     path: pathname,
     field: 'itemKey'
   })
-  console.log(props)
   setOpenMenu(menuKey.map(item => item.itemKey))
   setSelectMenuBar(menuKey.map(item => item.itemKey))
   

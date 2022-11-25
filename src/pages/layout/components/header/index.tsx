@@ -7,7 +7,7 @@ import Tabs from './tabs'
 import useStore from 'src/store';
 import { ColorModeType } from '../../../../config/type';
 import { isString } from '../../../../utils/is';
-import { useLocale } from '../../../../locales/index';
+import { useLocale } from '../../../../locales';
 
 const { Header } = Layout
 const Index: FC = () => {

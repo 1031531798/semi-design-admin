@@ -6,6 +6,5 @@ export function getDefaultRouter () {
   ]
 }
 export const RenderRouter: FC = () => {
-	const element = useRoutes(routeList)
-	return element
+	return useRoutes(routeList)
 }
