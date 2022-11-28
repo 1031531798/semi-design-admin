@@ -7,11 +7,15 @@ import './styles/common.scss'
 import useStore from 'src/store';
 import zh_CN from '@douyinfe/semi-ui/lib/es/locale/source/zh_CN';
 import en_GB from '@douyinfe/semi-ui/lib/es/locale/source/en_GB';
+import {loginUser} from "./api/login";
 
 
 function App() {
 const locale: string = useStore(state => state.localeMode)
 const localeStr = locale === 'zh_CN' ? localeConfig.zh_CN : localeConfig.en_GB
+    loginUser({id: '123213'}).then(() => {
+
+    })
 return (
     <div id="app">
       <LocaleProvider locale={locale === 'zh_CN' ? zh_CN : en_GB}>
