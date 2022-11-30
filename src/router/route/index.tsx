@@ -1,11 +1,11 @@
 import { lazy } from 'react';
-import { RouteObject, RouteProps } from 'react-router';
+import { RouteObject } from 'react-router';
 import LayoutIndex from '../../pages/layout/index';
 import DisposeRoute from './disposeRoute';
 import {MenuItem, menuList} from "../../pages/layout/components/sider/data";
 const Inexistence = lazy(() => import('src/pages/404'))
-// 动态生成路由
 
+// 动态生成路由
 export function setRouterByMenu (menus: MenuItem[]): RouteObject[] {
 	const list: RouteObject[] = []
 	menus.forEach(menu => {
@@ -26,7 +26,7 @@ export function setRouterByMenu (menus: MenuItem[]): RouteObject[] {
 export const routeList: RouteObject[] = [
 	{
 		path: '/',
-		element: <DisposeRoute element={<LayoutIndex />} titleId="" auth />,
+		element: <DisposeRoute element={<LayoutIndex />} titleId="home" auth />,
 		children: [
 			...setRouterByMenu(menuList),
 			// {
