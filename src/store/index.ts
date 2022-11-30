@@ -57,6 +57,7 @@ const useStore = create<StoreState>((set) => ({
     storage: sessionStorage
   }) || webSettings.defaultTabs,
   setTabList: (tabs: TabProps[]) => {
+    console.log('settabs ', tabs)
     setCache({
       key: CacheEnum.tabs,
       value: tabs,
