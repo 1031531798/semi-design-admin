@@ -4,8 +4,6 @@ export function axiosInterceptors (request: AxiosInstance) {
 
     // 请求拦截
     request.interceptors.request.use((config) => {
-        console.log('请求拦截', config)
-        
         // 在发送请求之前做些什么
         return config;
     }, function (error) {
@@ -16,7 +14,6 @@ export function axiosInterceptors (request: AxiosInstance) {
     // 响应拦截
     request.interceptors.response.use((response) => {
         // 2xx 范围内的状态码都会触发该函数。
-        console.log('响应拦截', response)
         return response;
     }, function (error) {
         // 超出 2xx 范围的状态码都会触发该函数。
