@@ -13,7 +13,8 @@ const getComponent = (props: any) => {
 }
 // 过滤的不需要显示tabs的路由
 const tabsFilter = [
-	'home'
+	'home',
+	'Login'
 ]
 const DisposeRoute: FC<DisposeRouteProps> = ({ titleId, auth, ...props }) => {
 	const { formatMessage } = useLocale()
