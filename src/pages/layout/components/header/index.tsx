@@ -7,7 +7,7 @@ import Tabs from './tabs'
 import useStore from 'src/store';
 import { ColorModeType } from '../../../../config/type';
 import { isString } from '../../../../utils/is';
-import { useLocale } from '../../../../locales/index';
+import { useLocale } from '../../../../locales';
 
 const { Header } = Layout
 const Index: FC = () => {
@@ -66,7 +66,7 @@ const Index: FC = () => {
               <Select.Option value='en_GB'>English</Select.Option>
             </Select>
             <Dropdown
-              position="bottomRight"
+              position="bottom"
               render={
                 <Dropdown.Menu>
                   <Dropdown.Item>详情</Dropdown.Item>
@@ -75,7 +75,7 @@ const Index: FC = () => {
               }
             >
               <Avatar size="small" color='light-blue' style={{ margin: 4 }}>BD</Avatar>
-              <span>Bytedancer</span>
+              <span>Admin</span>
             </Dropdown>
           </>
         }

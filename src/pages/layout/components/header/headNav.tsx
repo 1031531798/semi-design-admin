@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { usePrefixCls } from 'src/hook/useConfig';
 import { Breadcrumb } from '@douyinfe/semi-ui';
 import useStore from 'src/store';
-import { useLocale } from '../../../../locales/index';
+import { useLocale } from '../../../../locales';
 import { MenuItem } from 'src/pages/layout/components/sider/data';
 
 const Index: FC = () => {
@@ -12,10 +12,9 @@ const Index: FC = () => {
 
   function renderBreadcrumbItem () {
     if (Array.isArray(openRouterList)) {
-      const breadcrumbList = openRouterList.map((item: MenuItem) => {
+      return openRouterList.map((item: MenuItem) => {
         return <Breadcrumb.Item key={item.itemKey}>{formatMessage({id: item.text})}</Breadcrumb.Item>
       })
-      return breadcrumbList
     }
   }
   return (
