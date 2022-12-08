@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { usePrefixCls } from 'src/hook/useConfig';
 
-const Index: FC = () => {
+const Index = () => {
   const prefixCls = usePrefixCls('dashboard-workbench')
   useEffect(() => {
     const canvas = document.getElementById('canvas') as HTMLCanvasElement

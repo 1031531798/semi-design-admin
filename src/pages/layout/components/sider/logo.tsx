@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { usePrefixCls } from 'src/hook/useConfig';
-const Index :FC  = () => {
+const Index = () => {
   const prefixCls = usePrefixCls('layout-logo')
   return (
     <div className={`${prefixCls} flex-row`}  style={{color: 'black', margin: '10px'}}>

@@ -10,7 +10,7 @@ import { isString } from '../../../../utils/is';
 import { useLocale } from '../../../../locales';
 
 const { Header } = Layout
-const Index: FC = () => {
+const Index = () => {
   const prefixCls = usePrefixCls('layout-header')
   const setLocaleMode = useStore(state => state.setLocaleMode)
   const setMode = useStore(state => state.setColorMode)

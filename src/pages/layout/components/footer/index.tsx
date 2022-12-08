@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Layout } from '@douyinfe/semi-ui'
 const {Footer} = Layout
-const Index :FC  = () => {
+const Index = () => {
   return (
     <Footer></Footer>
   )

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { usePrefixCls } from 'src/hook/useConfig';
 import { Select } from '@douyinfe/semi-ui';
 
-const Index: FC = () => {
+const Index = () => {
   const prefixCls = usePrefixCls('pages-detail')
   return (
     <div className={prefixCls}>

@@ -6,7 +6,12 @@ interface FallbackMessageProps {
 	description?: string
 }
 
-const PageLoading: FC<FallbackMessageProps> = ({ message, description }) => {
+const PageLoading = (
+    {
+        message,
+        description
+    }: FallbackMessageProps
+) => {
 	return (
 		<Spin tip="正在加载中...">
 			<Banner

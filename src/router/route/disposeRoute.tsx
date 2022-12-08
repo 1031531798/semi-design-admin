@@ -16,7 +16,13 @@ const tabsFilter = [
 	'home',
 	'Login'
 ]
-const DisposeRoute: FC<DisposeRouteProps> = ({ titleId, auth, ...props }) => {
+const DisposeRoute = (
+    {
+        titleId,
+        auth,
+        ...props
+    }: DisposeRouteProps
+) => {
 	const { formatMessage } = useLocale()
 	const { pathname } = useLocation()
 	const tabList = useStore(state => state.tabList)

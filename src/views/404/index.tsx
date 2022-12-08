@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { usePrefixCls } from 'src/hook/useConfig';
 
-const Index: FC = () => {
+const Index = () => {
   const prefixCls = usePrefixCls('404')
   return (
     <div className={prefixCls}>

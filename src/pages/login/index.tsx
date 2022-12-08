@@ -4,7 +4,7 @@ import './login.scss'
 import LoginForm from "./loginForm";
 import Logo from "../layout/components/sider/logo";
 import LoginBg from '@/assets/image/login/work.svg'
-const Index: FC = () => {
+const Index = () => {
     const prefixCls = usePrefixCls('login')
     return (
         <div className={prefixCls}>

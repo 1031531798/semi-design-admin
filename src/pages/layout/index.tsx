@@ -9,7 +9,7 @@ import PageLoading from "src/components/loading/pageLoading";
 import './index.scss'
 
 const { Content } = Layout
-const LayoutIndex: React.FC = () => {
+const LayoutIndex = () => {
 	const prefixCls = usePrefixCls('layout')
 	return (
 		<Layout className={prefixCls}>

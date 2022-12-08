@@ -5,7 +5,7 @@ import useStore from 'src/store';
 import { useLocale } from '../../../../locales';
 import { MenuItem } from 'src/pages/layout/components/sider/data';
 
-const Index: FC = () => {
+const Index = () => {
   const prefixCls = usePrefixCls('header-breadcrumb')
   const openRouterList = useStore(state => state.openRouterList)
   const { formatMessage } = useLocale()

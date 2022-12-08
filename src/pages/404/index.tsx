@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 import { ColorModeType } from 'src/config/type';
 import { usePrefixCls } from 'src/hook/useConfig';
 import useStore from '../../store/index';
-const Index: FC = () => {
+const Index = () => {
   const prefixCls = usePrefixCls('layout-404')
   let mode = useStore(state => state.colorMode)
   const getImage = useMemo(() => {

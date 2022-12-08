@@ -5,7 +5,7 @@ import { TabProps } from '../../../../store/type';
 import { useLocation, useNavigate } from 'react-router-dom';
 import _ from 'lodash'
 
-const Index: FC = () => {
+const Index = () => {
   const tabList = useStore(state => state.tabList)
   const setTabList = useStore(state => state.setTabList)
   const navigate = useNavigate()
