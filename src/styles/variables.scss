@@ -1,4 +1,8 @@
 $--prefixes: semi-admin;
-$--color-white: #f8fafb;
-$--color-gray: #F9FAFC;
-$--color-black: #1c1e21;
+$--color-white: rgba(var(--semi-grey-0), 1);
+$--color-gray1: rgba(var(--semi-grey-1), 1);
+$--color-gray2: rgba(var(--semi-grey-2), 1);
+$--color-gray3: rgba(var(--semi-grey-3), 1);
+$--color-gray4: rgba(var(--semi-grey-4), 1);
+$--color-gray5: rgba(var(--semi-grey-5), 1);
+$--color-black: rgba(var(--semi-grey-9), 1);
