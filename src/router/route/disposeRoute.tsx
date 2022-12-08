@@ -1,10 +1,9 @@
-import { FC } from 'react'
 import { RouteProps } from 'react-router'
 import GuardRoute from './guardRoute';
 import useStore from 'src/store';
 import { useLocation } from 'react-router-dom';
 import {useLocale} from "../../locales";
-interface DisposeRouteProps extends RouteProps {
+export interface DisposeRouteProps extends RouteProps {
   titleId: string,
   auth?: boolean
 }

@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import { usePrefixCls } from 'src/hook/useConfig';
 import { Select } from '@douyinfe/semi-ui';
 

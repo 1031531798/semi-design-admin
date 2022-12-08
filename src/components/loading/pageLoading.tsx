@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import { Spin, Banner } from '@douyinfe/semi-ui'
 
 interface FallbackMessageProps {

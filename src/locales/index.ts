@@ -13,8 +13,12 @@ export const localeConfig = {
 export const useLocale = () => {
 	const { formatMessage: _formatMessage, ...rest } = useIntl()
 	const formatMessage: FormatMessageProps = _formatMessage
+	function getFormatText (id: string) {
+		return formatMessage({id})
+	}
 	return {
 		...rest,
-		formatMessage
+		formatMessage,
+		getFormatText
 	}
 }

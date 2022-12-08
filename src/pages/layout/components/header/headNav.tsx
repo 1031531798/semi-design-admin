@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { usePrefixCls } from 'src/hook/useConfig';
 import { Breadcrumb } from '@douyinfe/semi-ui';
 import useStore from 'src/store';

@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import { usePrefixCls } from 'src/hook/useConfig';
 import './login.scss'
 import LoginForm from "./loginForm";
