@@ -1,4 +1,4 @@
-import { FC, useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { Nav, Avatar, Dropdown, Select, Layout, Button, Tooltip } from '@douyinfe/semi-ui';
 import { IconLanguage, IconMoon, IconSun } from '@douyinfe/semi-icons';
 import { usePrefixCls } from '../../../../hook/useConfig';

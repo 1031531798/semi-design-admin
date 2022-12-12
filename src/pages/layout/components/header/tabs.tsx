@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 import { Tabs } from '@douyinfe/semi-ui';
 import useStore from 'src/store';
 import { TabProps } from '../../../../store/type';
@@ -11,7 +11,7 @@ const Index = () => {
   const navigate = useNavigate()
   const {pathname} = useLocation()
   const getTabList: TabProps[] = useMemo(() => {
-    return tabList 
+    return tabList
   }, [tabList])
   // 点击标签
   const changeTab = (key: string) => {

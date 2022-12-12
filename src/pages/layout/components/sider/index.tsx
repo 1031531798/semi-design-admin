@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Layout, Nav } from '@douyinfe/semi-ui'
 import { usePrefixCls } from 'src/hook/useConfig';
 import { useLocale } from '../../../../locales';

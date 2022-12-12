@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 import { ColorModeType } from 'src/config/type';
 import { usePrefixCls } from 'src/hook/useConfig';
 import useStore from '../../store/index';

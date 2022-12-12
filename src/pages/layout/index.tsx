@@ -17,7 +17,7 @@ const LayoutIndex = () => {
 			<Layout>
 				<Header />
 				<Content className={`${prefixCls}-content`}>
-					<Suspense fallback={<PageLoading message="正在加载中..." />}>
+					<Suspense fallback={<PageLoading />}>
 						<Outlet />
 					</Suspense>
 				</Content>
