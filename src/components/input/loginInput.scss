@@ -4,21 +4,14 @@
     color: $--color-gray4;
     background-color: $--color-gray2;
     border-radius: 0.3rem;
-    height: 80px;
+    height: 4.5rem;
     width: 100%;
     &-icon {
       font-size: 40px;
       color: $--color-gray4;
       padding: 10px 20px;
     }
-    .login-input-active {
-      .login-input-box-label {
-        transform: translateY(-22px);
-      }
-      .login-semi-input {
-        top: 5px;
-      }
-    }
+
     &-box {
       position: relative;
       display: flex;
@@ -46,5 +39,14 @@
     &-status {
       width: 3rem;
       float: right;
+    }
+  }
+  // 激活样式
+  .login-input-active {
+    .login-input-box-label {
+      transform: translateY(-22px);
+    }
+    .login-semi-input {
+      top: 5px;
     }
   }

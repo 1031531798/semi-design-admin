@@ -1,18 +1,17 @@
-import React, {ReactNode, useEffect, useMemo, useState} from "react";
+import React, {useMemo, useState} from "react";
 import './loginInput.scss'
 import {Input} from "@douyinfe/semi-ui";
+import {LoginInputProps} from "./types";
 
-interface LoginInputProps {
-    placeholder?: string
-    icon?: ReactNode,
-    suffix?: ReactNode
-}
+
+
 
 const LoginInput = (
     {
         icon,
         suffix,
-        placeholder
+        placeholder,
+        changeData
     }: LoginInputProps
 ) => {
     const [inputValue, setInputValue] = useState('');
@@ -32,18 +31,19 @@ const LoginInput = (
     // 赋值
     function inputChange (value: string) {
         setInputValue(value)
+        changeData && changeData(value)
     }
     // 获取 box 样式
     const boxClass = useMemo(() => {
-        return `login-input-box ${isActive ? 'login-input-active' : ''}`
+        return `login-input flex-row ${isActive ? 'login-input-active' : ''}`
     }, [isActive])
 
     return (
-        <div className={'login-input flex-row'}>
+        <div className={boxClass}>
             <div className={'login-input-icon flex-row-center'}>
                 {icon}
             </div>
-            <div className={boxClass}>
+            <div className={'login-input-box'}>
                 <label className={'login-input-box-label '}>{placeholder}</label>
                 <Input className={'login-semi-input'} onChange={inputChange} onFocus={inputFocus} onBlur={inputBlur} />
             </div>
