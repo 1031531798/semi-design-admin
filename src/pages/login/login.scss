@@ -38,6 +38,33 @@
             font-size: 14px;
           }
         }
+        &-body {
+          &-operate {
+            align-items: center;
+            justify-content: space-between;
+            .semi-checkbox:hover .semi-checkbox-inner-display {
+              border-color: $--color-green;
+              box-shadow: inset 0 0 0 1px $--color-green !important;
+            }
+            .remember-me {
+              // 多选框 样式修改
+              .semi-checkbox-inner-display {
+                border-radius: 50% !important;
+              }
+
+              .semi-checkbox-indeterminate .semi-checkbox-inner-display, .semi-checkbox-checked .semi-checkbox-inner-display {
+                background-color: $--color-green !important;
+              }
+              .semi-checkbox-inner-checked {
+                .semi-checkbox-inner-display {
+                  border-color: $--color-green;
+                  box-shadow: inset 0 0 0 1px $--color-green !important;
+                  background-color: $--color-green !important;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

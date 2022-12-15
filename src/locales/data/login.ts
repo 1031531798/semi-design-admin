@@ -19,5 +19,10 @@ export const localesLogin = {
     [prefixCls + 'remember']: {
         ['zh_CN']: '记住账号',
         ['en_GB']: 'remember me',
+    },
+    [prefixCls + 'forget-password']: {
+        ['zh_CN']: '忘记密码?',
+        ['en_GB']: 'forget Password?',
     }
+
 }

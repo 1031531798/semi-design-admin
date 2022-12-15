@@ -7,7 +7,6 @@ import {useState} from "react";
 import {cloneDeep} from "lodash";
 import { LoginInputRenderProps} from "../../components/input/types";
 import {Checkbox} from "@douyinfe/semi-ui";
-
 const LoginForm = () => {
     const prefixCls = usePrefixCls('login-main-body')
     const { getFormatText } = useLocale()
@@ -66,9 +65,10 @@ const LoginForm = () => {
             </div>
             <div className={`${prefixCls}-form-body`}>
                 {renderInputs()}
-            </div>
-            <div className={`flex-row`}>
-                <Checkbox className={'remember-me'}>{getFormatText('web.login.remember')}</Checkbox>
+                <div className={`flex-row ${prefixCls}-form-body-operate`}>
+                    <Checkbox className={'remember-me'}>{getFormatText('web.login.remember')}</Checkbox>
+                    <span>{getFormatText('web.login.forget-password')}</span>
+                </div>
             </div>
         </div>
     )

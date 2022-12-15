@@ -1,6 +1,4 @@
 import { MessageDescriptor, useIntl } from 'react-intl'
-import zh_CN from './zh-CN/index';
-import en_GB from './en-GB/index';
 import localesData from "./data";
 interface MessageProps extends MessageDescriptor {
 	id: string
