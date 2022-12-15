@@ -1,15 +1,27 @@
 import { MessageDescriptor, useIntl } from 'react-intl'
 import zh_CN from './zh-CN/index';
 import en_GB from './en-GB/index';
+import localesData from "./data";
 interface MessageProps extends MessageDescriptor {
 	id: string
 }
 type FormatMessageProps = (descriptor: MessageProps) => string
+function getLocalesData () {
+	const zh_CN: any = {}
+	const en_GB: any = {}
 
-export const localeConfig = {
-	zh_CN: zh_CN,
-	en_GB: en_GB
+	for (const key in localesData) {
+		console.log(key)
+		const str = localesData[key]
+		zh_CN[key] = str.zh_CN
+		en_GB[key] = str.en_GB
+	}
+	return {
+		zh_CN,
+		en_GB
+	}
 }
+export const localeConfig = getLocalesData()
 export const useLocale = () => {
 	const { formatMessage: _formatMessage, ...rest } = useIntl()
 	const formatMessage: FormatMessageProps = _formatMessage

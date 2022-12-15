@@ -6,7 +6,7 @@ import {IconMailStroked, IconTickCircle, IconClear, IconLockStroked, IconUploadE
 import {useState} from "react";
 import {cloneDeep} from "lodash";
 import { LoginInputRenderProps} from "../../components/input/types";
-import {Form} from "@douyinfe/semi-ui";
+import {Checkbox} from "@douyinfe/semi-ui";
 
 const LoginForm = () => {
     const prefixCls = usePrefixCls('login-main-body')
@@ -61,11 +61,14 @@ const LoginForm = () => {
     return (
         <div className={`${prefixCls}-form flex-column`}>
             <div className={`${prefixCls}-form-head`}>
-                <h2>{getFormatText('web.login.welcome')}</h2>
+                <h1>{getFormatText('web.login.welcome')}</h1>
                 <span>{getFormatText( 'web.login.desc')}</span>
             </div>
             <div className={`${prefixCls}-form-body`}>
                 {renderInputs()}
+            </div>
+            <div className={`flex-row`}>
+                <Checkbox className={'remember-me'}>{getFormatText('web.login.remember')}</Checkbox>
             </div>
         </div>
     )
