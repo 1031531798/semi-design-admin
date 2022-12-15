@@ -20,9 +20,20 @@ export const localesLogin = {
         ['zh_CN']: '记住账号',
         ['en_GB']: 'remember me',
     },
-    [prefixCls + 'forget-password']: {
+    [prefixCls + 'forgetPassword']: {
         ['zh_CN']: '忘记密码?',
         ['en_GB']: 'forget Password?',
-    }
-
+    },
+    [prefixCls + 'loginText']: {
+        ['zh_CN']: '现在登录',
+        ['en_GB']: 'Login now',
+    },
+    [prefixCls + 'register']: {
+        ['zh_CN']: '注册账号',
+        ['en_GB']: 'Create Account',
+    },
+    [prefixCls + 'join']: {
+        ['zh_CN']: '或者选择其他方式登录',
+        ['en_GB']: 'Or you can join with',
+    },
 }
