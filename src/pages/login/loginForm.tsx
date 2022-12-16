@@ -99,7 +99,7 @@ const LoginForm = () => {
                     <Text>{getFormatText('web.login.forgetPassword')}</Text>
                 </div>
                 <div className={`flex-row ${prefixCls}-form-body-menu`}>
-                    <Button theme="solid" size='large' onClick={() => setLoading(false)}>{getFormatText('web.login.loginText')}</Button>
+                    <Button loading={loginLoading} theme="solid" size='large' onClick={() => setLoading(false)}>{getFormatText('web.login.loginText')}</Button>
                     <Button size='large'>{getFormatText('web.login.register')}</Button>
                 </div>
                 <div className={`${prefixCls}-form-body-join`}>
