@@ -1,9 +1,9 @@
 import { RouteProps } from 'react-router'
 import GuardRoute from './guardRoute';
 import useStore from 'src/store';
-import { useLocation } from 'react-router-dom';
+import {PathRouteProps, useLocation} from 'react-router-dom';
 import {useLocale} from "../../locales";
-export interface DisposeRouteProps extends RouteProps {
+export interface DisposeRouteProps extends PathRouteProps {
   titleId: string,
   auth?: boolean
 }
@@ -24,8 +24,7 @@ const DisposeRoute = (
 ) => {
 	const { formatMessage } = useLocale()
 	const { pathname } = useLocation()
-	const tabList = useStore(state => state.tabList)
-	const setTabList = useStore(state => state.setTabList)
+	const {tabList, setTabList, token} = useStore()
 	const RouteComponents = auth ? GuardRoute : getComponent
 
 	// 根据titleId过滤不需要的路由
@@ -35,7 +34,7 @@ const DisposeRoute = (
 			document.title = titleId
 		}
 		// 设置tabs
-		tabList.findIndex(item => {
+		token && tabList.findIndex(item => {
 			return item.itemKey === pathname
 		}) < 0 && (
 			setTabList([...tabList, {

@@ -9,7 +9,6 @@ function getLocalesData () {
 	const en_GB: any = {}
 
 	for (const key in localesData) {
-		console.log(key)
 		const str = localesData[key]
 		zh_CN[key] = str.zh_CN
 		en_GB[key] = str.en_GB

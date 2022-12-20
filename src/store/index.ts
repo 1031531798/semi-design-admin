@@ -6,28 +6,27 @@ import { ColorModeType } from 'src/config/type';
 import { webSettings } from 'src/config/setting';
 import { TabProps } from './type';
 
-export interface openMenuItem {
-  path: string,
-  itemKey: string,
-  text: string
-}
 interface StoreState {
-  localeMode: string,
-  menuFold: boolean,
-  openRouterList: MenuItem[],
-  openMenuBar: string[];
-  selectMenuBar: string[];
-  colorMode: ColorModeType;
-  tabList: TabProps[];
-  setTabList: (tabs: TabProps[]) => void;
-  setColorMode: (mode: ColorModeType) => void;
-  setOpenMenuBar: (menu: string[]) => void,
-  setSelectMenuBar: (menu: string[]) => void,
-  setOpenRouter: (t: MenuItem[]) => void,
-  setLocaleMode: (mode: string) => void,
+  token: string | undefined
+  localeMode: string
+  menuFold: boolean
+  openRouterList: MenuItem[]
+  openMenuBar: string[]
+  selectMenuBar: string[]
+  colorMode: ColorModeType
+  tabList: TabProps[]
+  setToken: (token: string) => void
+  setTabList: (tabs: TabProps[]) => void
+  setColorMode: (mode: ColorModeType) => void
+  setOpenMenuBar: (menu: string[]) => void
+  setSelectMenuBar: (menu: string[]) => void
+  setOpenRouter: (t: MenuItem[]) => void
+  setLocaleMode: (mode: string) => void
 }
 
 const useStore = create<StoreState>((set) => ({
+  token: undefined,
+  setToken: (data: string) => set((state: StoreState) => ({ token: data })),
   // 菜单展开
   menuFold: false,
   changeMenuFold: () => set((state: StoreState) => ({ menuFold: !state.menuFold })),

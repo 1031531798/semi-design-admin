@@ -1,5 +1,5 @@
 import { TabProps } from '../store/type';
-export interface webConfig {
+export interface WebConfig {
   prefixCls: string | undefined;
   menuSetting: MenuConfig,
   defaultRouter: string,
@@ -10,7 +10,7 @@ export interface webConfig {
 export type MenuConfig =  {
   width: string | number;
 }
-export interface cacheProps {
+export interface CacheProps {
   cacheCipher: {key: string; iv: string},
   cacheTimeOut: number
 }

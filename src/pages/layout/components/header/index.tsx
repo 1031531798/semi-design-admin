@@ -1,13 +1,7 @@
-import { useMemo, useState, useEffect } from 'react';
-import { Nav, Avatar, Dropdown, Select, Layout, Button, Tooltip } from '@douyinfe/semi-ui';
-import { IconLanguage, IconMoon, IconSun } from '@douyinfe/semi-icons';
+import { Nav, Avatar, Dropdown, Layout } from '@douyinfe/semi-ui';
 import { usePrefixCls } from '../../../../hook/useConfig';
 import HeaderNav from './headNav'
 import Tabs from './tabs'
-import useStore from 'src/store';
-import { ColorModeType } from '../../../../config/type';
-import { isString } from '../../../../utils/is';
-import { useLocale } from '../../../../locales';
 import ColorMode from "./colorMode";
 import LocaleMode from "./localeMode";
 

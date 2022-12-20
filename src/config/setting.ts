@@ -1,5 +1,5 @@
-import { webConfig, cacheProps, ColorModeType } from './type';
-const webSettings: webConfig = {
+import { WebConfig, CacheProps, ColorModeType } from './type';
+const webSettings: WebConfig = {
   prefixCls: process.env.REACT_APP_PREFIXCLS,
   menuSetting: {
     width: 250
@@ -10,7 +10,7 @@ const webSettings: webConfig = {
     tab: '工作台', itemKey: '/dashboard/workbench'
   }]
 }
-const cacheSettings: cacheProps = {
+const cacheSettings: CacheProps = {
   cacheCipher: {
     key: '_11111000001111@',
     iv: '@11111000001111_',
