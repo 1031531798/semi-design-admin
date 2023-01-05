@@ -8,5 +8,4 @@ export const localesSetting = {
         zh_CN: '切换到暗色模式',
         en_GB: 'Switch to dark mode'
     },
-
 }
