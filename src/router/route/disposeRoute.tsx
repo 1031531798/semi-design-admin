@@ -1,4 +1,3 @@
-import { RouteProps } from 'react-router'
 import GuardRoute from './guardRoute';
 import useStore from 'src/store';
 import {PathRouteProps, useLocation} from 'react-router-dom';

@@ -4,11 +4,12 @@ import HeaderNav from './headNav'
 import Tabs from './tabs'
 import ColorMode from "./colorMode";
 import LocaleMode from "./localeMode";
+import useStore from "../../../../store";
 
 const { Header } = Layout
 const Index = () => {
-  const prefixCls = usePrefixCls('layout-header')
-
+  const prefixCls = usePrefixCls('layout-header');
+  const {token} = useStore()
   return (
     <Header className={prefixCls}>
       <Nav
@@ -30,8 +31,8 @@ const Index = () => {
                 </Dropdown.Menu>
               }
             >
-              <Avatar size="small" color='light-blue' style={{ margin: 4 }}>BD</Avatar>
-              <span>Admin</span>
+              <Avatar size="small" color='light-blue' style={{ margin: 4 }}>{token?.slice(0, 2)}</Avatar>
+              <span>{token}</span>
             </Dropdown>
           </>
         }

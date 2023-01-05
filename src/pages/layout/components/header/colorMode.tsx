@@ -1,5 +1,5 @@
 import {Button, Tooltip} from "@douyinfe/semi-ui";
-import {useEffect, useMemo, useState} from "react";
+import {useMemo} from "react";
 import useStore from "../../../../store";
 import {ColorModeType} from "../../../../config/type";
 import {IconMoon, IconSun} from "@douyinfe/semi-icons";

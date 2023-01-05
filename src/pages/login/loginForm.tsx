@@ -11,7 +11,6 @@ import googleLogo from '@/assets/image/login/google_logo.png';
 import twitterLogo from '@/assets/image/login/twitter_logo.png';
 import {useGoogleAuth} from "../../hook/useGoogleAuth";
 import useStore from "../../store";
-import {redirect} from "react-router-dom";
 import {webSettings} from "../../config/setting";
 const LoginForm = () => {
     const prefixCls = usePrefixCls('login-main-body')

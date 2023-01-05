@@ -26,7 +26,18 @@ interface StoreState {
 
 const useStore = create<StoreState>((set) => ({
   token: undefined,
-  setToken: (data: string) => set((state: StoreState) => ({ token: data })),
+  setToken: (token: string) => {
+    setCache({
+      key: CacheEnum.token,
+      value: token,
+      storage: sessionStorage
+    })
+    return set(() => (
+        {
+          token
+        }
+    ))
+  },
   // 菜单展开
   menuFold: false,
   changeMenuFold: () => set((state: StoreState) => ({ menuFold: !state.menuFold })),
