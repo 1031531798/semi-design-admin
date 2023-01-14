@@ -11,6 +11,7 @@ const Index = () => {
   const navigate = useNavigate()
   const {pathname} = useLocation()
   const getTabList: TabProps[] = useMemo(() => {
+    console.log('tab list 更新')
     return tabList
   }, [tabList])
   // 点击标签

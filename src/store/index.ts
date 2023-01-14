@@ -25,7 +25,10 @@ interface StoreState {
 }
 
 const useStore = create<StoreState>((set) => ({
-  token: undefined,
+  token: getCache({
+    key: CacheEnum.token,
+    storage: sessionStorage
+  }) || undefined,
   setToken: (token: string) => {
     setCache({
       key: CacheEnum.token,
@@ -67,6 +70,7 @@ const useStore = create<StoreState>((set) => ({
     storage: sessionStorage
   }) || webSettings.defaultTabs,
   setTabList: (tabs: TabProps[]) => {
+    console.log('设置tab 数据', tabs)
     setCache({
       key: CacheEnum.tabs,
       value: tabs,

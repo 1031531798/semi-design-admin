@@ -23,25 +23,14 @@ const DisposeRoute = (
 ) => {
 	const { formatMessage } = useLocale()
 	const { pathname } = useLocation()
-	const {tabList, setTabList, token} = useStore()
 	const RouteComponents = auth ? GuardRoute : getComponent
-
 	// 根据titleId过滤不需要的路由
 	if (!tabsFilter.includes(titleId)) {
 		if (titleId) {
 			titleId = formatMessage({id: titleId})
 			document.title = titleId
 		}
-		// 设置tabs
-		token && tabList.findIndex(item => {
-			return item.itemKey === pathname
-		}) < 0 && (
-			setTabList([...tabList, {
-				itemKey: pathname,
-				tab: titleId || '位置',
-				closable: true
-			}])
-		)
+
 	}
 	return <RouteComponents {...props} titleId={titleId} />
 }

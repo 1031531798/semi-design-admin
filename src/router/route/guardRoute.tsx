@@ -4,25 +4,20 @@ import useStore from '../../store/index';
 import { findMenuByPath } from '../../utils/utils';
 import {webSettings} from "../../config/setting";
 import {DisposeRouteProps} from "./disposeRoute";
+import {Toast} from "@douyinfe/semi-ui";
 
+// 路由前置守卫
 const GuardRoute = ({element}: DisposeRouteProps ) => {
-  const {setOpenMenuBar, setSelectMenuBar, token} = useStore()
+  const {token} = useStore()
   const { pathname } = useLocation()
-  // 只有token存在才记录menu
-  if (token) {
-    const menuKey = findMenuByPath({
-      path: pathname,
-      menus: menuList,
-      field: 'itemKey'
-    })
-    setOpenMenuBar(menuKey.map(item => item.itemKey))
-    setSelectMenuBar(menuKey.map(item => item.itemKey))
+  if (!token) {
+    // 如果token不存在就返回login
+    Toast.warning('token 不能为空')
+    return  <Navigate to={{ pathname: '/login' }} replace />
   }
-
-  // 路由验证
-  const path = token ? webSettings.defaultRouter : '/login'
+  // 默认首页
   return pathname === '/' ? (
-      <Navigate to={{ pathname: path }} replace />
+      <Navigate to={{ pathname: webSettings.defaultRouter }} replace />
   ) : (
       element
   )

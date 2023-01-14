@@ -14,19 +14,13 @@ const Index = () => {
   const prefixCls = usePrefixCls('layout-sider')
   const { setCache } = useCache()
   const { pathname } = useLocation()
+  const {tabList, setTabList} = useStore()
   const setOpenRouter = useStore(state => state.setOpenRouter)
   const localeMode = useStore(state => state.localeMode)
-  // 使用缓存数据
-  useEffect(() => {
-    // 当前页面路由参数
-  setBreadcrumb(pathname)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
   const navigate = useNavigate()
   const { formatMessage } = useLocale()
   const getMenu = useMemo(() => {
     return setMenuText(menuList)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuList, localeMode])
   // 菜单名国际化
   function setMenuText(list: MenuItem[]): MenuItem[] {
@@ -48,8 +42,10 @@ const Index = () => {
       return item.itemKey
     })
   }, [pathname])
-  // 设置面包屑数据
-  function setBreadcrumb (path: string) {
+  // 设置面包屑和标签页
+  function setMenuHandle (data: any) {
+    const {path, text} = data
+    if (!path) return
     const menuTree: MenuItem[] = findMenuByPath({
       menus: menuList,
       path,
@@ -60,13 +56,26 @@ const Index = () => {
         text: item.text
       }
     })
+    // 判断tab 是否存在
+    const hasTab = tabList.findIndex(item => {
+      return item.itemKey === path
+    })
+    // 设置tabs
+    if (hasTab < 0 ) {
+      setTabList([...tabList, {
+        itemKey: path,
+        tab: text || '未知',
+        closable: true
+      }])
+    }
+    // 设置面包屑数据
     setOpenRouter(menuTree)
   }
   // 点击菜单
   function selectMenu(data: any) {
     const path = data.selectedItems[0].path
     // 设置面包屑
-    setBreadcrumb(path)
+    setMenuHandle(data.selectedItems[0])
     // 跳转菜单路由
     navigate(path)
   }
