@@ -21,7 +21,7 @@
     border-radius: 10px;
     box-shadow: 2px 2px 14px 2px rgba(0,0,0,0.1);
     &-body {
-      height: 32rem;
+      min-height: 32rem;
       max-height: 600px;
       justify-content: space-between;
       &-img {

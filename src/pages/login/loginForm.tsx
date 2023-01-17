@@ -98,7 +98,8 @@ const LoginForm = (props: {
             ...formData,
             userName: formData.userName
         }).then(res => {
-            setToken(formData.userName)
+            const {data} = res
+            setToken(data.data.userToken)
             navigate(webSettings.defaultRouter)
         })
     }

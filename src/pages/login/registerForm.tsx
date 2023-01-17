@@ -1,9 +1,10 @@
 import {usePrefixCls} from "../../hook/useConfig";
 import './register.scss'
-import {Button, Form, Row, useFormState} from "@douyinfe/semi-ui";
+import {Button, Form, Row, Toast, useFormState} from "@douyinfe/semi-ui";
 import {BaseFormApi} from "@douyinfe/semi-foundation/form/interface";
 import {useState} from "react";
 import {InputMode, InputProps} from "@douyinfe/semi-ui/lib/es/input";
+import {registerUser} from "../../api/login";
 interface RegisterFormProps {
     setFormActive: Function
 }
@@ -20,8 +21,19 @@ const RegisterForm = ({setFormActive}: RegisterFormProps) => {
     const getFormApi = (api: BaseFormApi) => {
         formApi = api
     }
+
     function handleRegister () {
-        formApi.submitForm()
+        formApi.validate().then(() => {
+            console.log('表单校验通过')
+            registerUser(formApi.getFormState().values).then(() => {
+                Toast.success('注册成功,请登录')
+                handleBack()
+                formApi.reset()
+            })
+        })
+    }
+    function handleBack () {
+        setFormActive('login')
     }
 
     // 渲染注册表输入框
@@ -52,7 +64,7 @@ const RegisterForm = ({setFormActive}: RegisterFormProps) => {
                 </Row>
             </Form>
             <Button size={"large"} block theme='solid' type='primary' style={{marginBottom: '20px', marginTop: '10px'}} onClick={handleRegister}>确认注册</Button>
-            <Button size={"large"} block theme='solid' type='tertiary' onClick={() => setFormActive('login')}>返回登录</Button>
+            <Button size={"large"} block theme='solid' type='tertiary' onClick={handleBack}>返回登录</Button>
         </div>
     )
 }
