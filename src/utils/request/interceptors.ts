@@ -1,12 +1,19 @@
 import  {AxiosInstance} from "axios";
 import {requestCode} from "./requestCode";
 import {Toast} from "@douyinfe/semi-ui";
+import useStore from "../../store";
 // axios 拦截器
 export function axiosInterceptors (request: AxiosInstance) {
 
     // 请求拦截
     request.interceptors.request.use((config) => {
         // 在发送请求之前做些什么
+        const {headers} = config
+        const {token} = useStore()
+        // 请求头添加token
+        if (token && headers) {
+            headers.token = token
+        }
         return config;
     }, function (error) {
         // 对请求错误做些什么

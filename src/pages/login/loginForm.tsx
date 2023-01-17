@@ -22,11 +22,8 @@ const LoginForm = (props: {
     const {setFormActive} = props
     const {Text} = Typography
     const {setToken} = useStore()
-    let loginLoading: boolean = false
+    const [loginLoading, setLoading] = useState(false)
     const navigate = useNavigate()
-    function setLoading (flag: boolean) {
-        loginLoading = flag
-    }
     const iconMap = {
         [InputStatus.wait]: <span></span>,
         [InputStatus.success]: <IconTickCircle style={{color: 'var(--semi-color-success)'}} />,
@@ -94,6 +91,7 @@ const LoginForm = (props: {
         })
     }
     const submitForm = () => {
+        setLoading(true)
         loginUser({
             ...formData,
             userName: formData.userName
@@ -101,6 +99,8 @@ const LoginForm = (props: {
             const {data} = res
             setToken(data.data.userToken)
             navigate(webSettings.defaultRouter)
+        }).finally(() => {
+            setLoading(false)
         })
     }
 
@@ -114,7 +114,7 @@ const LoginForm = (props: {
                 {renderInputs()}
                 <div className={`flex-row ${prefixCls}-form-body-operate`}>
                     <Checkbox className={'remember-me'}>{getFormatText('web.login.remember')}</Checkbox>
-                    <Text>{getFormatText('web.login.forgetPassword')}</Text>
+                    <Text link>{getFormatText('web.login.forgetPassword')}</Text>
                 </div>
                 <div className={`flex-row ${prefixCls}-form-body-menu`}>
                     <Button loading={loginLoading} theme="solid" size='large' onClick={submitForm}>{getFormatText('web.login.loginText')}</Button>
