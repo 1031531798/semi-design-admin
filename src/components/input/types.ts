@@ -10,5 +10,5 @@ export interface LoginInputProps {
 }
 
 export interface LoginInputRenderProps extends LoginInputProps{
-    type: 'email' | 'password'
+    type: 'userName' | 'password'
 }

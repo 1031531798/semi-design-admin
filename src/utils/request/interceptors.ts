@@ -1,4 +1,6 @@
 import  {AxiosInstance} from "axios";
+import {requestCode} from "./requestCode";
+import {Toast} from "@douyinfe/semi-ui";
 // axios 拦截器
 export function axiosInterceptors (request: AxiosInstance) {
 
@@ -14,7 +16,17 @@ export function axiosInterceptors (request: AxiosInstance) {
     // 响应拦截
     request.interceptors.response.use((response) => {
         // 2xx 范围内的状态码都会触发该函数。
-        return response;
+        return new Promise((resolve, reject) => {
+            const {data} = response
+            const {code, message} = data
+            if (code === requestCode.RESULT_CODE_SUCCESS) {
+                resolve(response)
+            }else {
+                Toast.error(message)
+                reject(response)
+            }
+        })
+
     }, function (error) {
         // 超出 2xx 范围的状态码都会触发该函数。
         // 对响应错误做点什么

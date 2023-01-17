@@ -8,9 +8,9 @@ export const localesLogin = {
         zh_CN: 'Semi-admin 基于 React17、Semi-UI、TypeScript，为开发中大型项目提供开箱即用的解决方案.',
         en_GB: 'Semi-admin is based on React17, Semi-UI, TypeScript,  provides out-of-the-box solutions for developing medium and large projects'
     },
-    [prefixCls + 'email']: {
-        zh_CN: '邮箱地址',
-        en_GB: 'Email Address',
+    [prefixCls + 'userName']: {
+        zh_CN: '用户名',
+        en_GB: 'Account',
     },
     [prefixCls + 'password']: {
         zh_CN: '密码',

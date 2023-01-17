@@ -30,7 +30,6 @@ const DisposeRoute = (
 			titleId = formatMessage({id: titleId})
 			document.title = titleId
 		}
-
 	}
 	return <RouteComponents {...props} titleId={titleId} />
 }

@@ -2,7 +2,7 @@ import {usePrefixCls} from "../../hook/useConfig";
 import {useLocale} from "../../locales";
 import LoginInput from "../../components/input/loginInput";
 import {InputStatus} from "../../enum/common";
-import {IconMailStroked, IconTickCircle, IconClear, IconLockStroked, IconUploadError} from "@douyinfe/semi-icons";
+import {IconUser, IconTickCircle, IconClear, IconLockStroked, IconUploadError} from "@douyinfe/semi-icons";
 import {useState} from "react";
 import {cloneDeep} from "lodash";
 import { LoginInputRenderProps} from "../../components/input/types";
@@ -12,12 +12,15 @@ import twitterLogo from '@/assets/image/login/twitter_logo.png';
 import {useGoogleAuth} from "../../hook/useGoogleAuth";
 import useStore from "../../store";
 import {webSettings} from "../../config/setting";
+import {loginUser} from "../../api/login";
+import { useNavigate} from "react-router-dom";
 const LoginForm = () => {
     const prefixCls = usePrefixCls('login-main-body')
     const { getFormatText } = useLocale()
     const {Text} = Typography
     const {setToken} = useStore()
     let loginLoading: boolean = false
+    const navigate = useNavigate()
     function setLoading (flag: boolean) {
         loginLoading = flag
     }
@@ -29,18 +32,18 @@ const LoginForm = () => {
     }
     // 表单状态控制
     const [statusMap, setStatusMap]= useState({
-        email: InputStatus.wait,
+        userName: InputStatus.wait,
         password: InputStatus.wait
     })
     // 变更 输入框状态
-    function changeStatus (field: 'email' | 'password', value: InputStatus) {
+    function changeStatus (field: 'userName' | 'password', value: InputStatus) {
         let data = cloneDeep(statusMap)
         data[field] = value
         setStatusMap(data)
     }
-    const [formData, setFormData] = useState({email: '', password: ''})
+    const [formData, setFormData] = useState({userName: '', password: ''})
     // 变更 form数据
-    function changeFormData (field: 'email' | 'password', value: string) {
+    function changeFormData (field: 'userName' | 'password', value: string) {
         let data = cloneDeep(formData)
         data[field] = value
         setFormData(data)
@@ -48,7 +51,7 @@ const LoginForm = () => {
 
     function renderInputs () {
         const inputList:LoginInputRenderProps[] = [
-            {type: 'email', icon: <IconMailStroked size={'inherit'} />, status: statusMap.email, placeholder: getFormatText('web.login.email')},
+            {type: 'userName', icon: <IconUser size={'inherit'} />, status: statusMap.userName, placeholder: getFormatText('web.login.userName')},
             {type: 'password', icon: <IconLockStroked size={'inherit'} />, status: statusMap.password, placeholder: getFormatText('web.login.password')},
         ]
         return inputList.map((input) => {
@@ -87,10 +90,15 @@ const LoginForm = () => {
         })
     }
     const submitForm = () => {
-        console.log(formData)
-        setToken(formData.email)
-        window.location.href = webSettings.defaultRouter
-        // redirect('/dashboard/workbench')
+        loginUser({
+            ...formData,
+            userName: formData.userName
+        }).then(res => {
+            console.log(res, '登录')
+            setToken(formData.userName)
+            // window.location.href = webSettings.defaultRouter
+            navigate(webSettings.defaultRouter)
+        })
     }
 
     return (
