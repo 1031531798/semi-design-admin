@@ -8,6 +8,7 @@ import {LoginInputProps} from "./types";
 
 const LoginInput = (
     {
+        mode,
         icon,
         suffix,
         placeholder,
@@ -45,7 +46,7 @@ const LoginInput = (
             </div>
             <div className={'login-input-box'}>
                 <label className={'login-input-box-label '}>{placeholder}</label>
-                <Input className={'login-semi-input'} onChange={inputChange} onFocus={inputFocus} onBlur={inputBlur} />
+                <Input mode={mode} className={'login-semi-input'} onChange={inputChange} onFocus={inputFocus} onBlur={inputBlur} />
             </div>
             <div className={'login-input-status flex-row-center'}>
                 {suffix}

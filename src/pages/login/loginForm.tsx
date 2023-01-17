@@ -14,9 +14,12 @@ import useStore from "../../store";
 import {webSettings} from "../../config/setting";
 import {loginUser} from "../../api/login";
 import { useNavigate} from "react-router-dom";
-const LoginForm = () => {
+const LoginForm = (props: {
+    setFormActive: Function
+}) => {
     const prefixCls = usePrefixCls('login-main-body')
     const { getFormatText } = useLocale()
+    const {setFormActive} = props
     const {Text} = Typography
     const {setToken} = useStore()
     let loginLoading: boolean = false
@@ -59,6 +62,7 @@ const LoginForm = () => {
                 <LoginInput
                     key={input.type}
                     changeData={(value:string) => changeFormData(input.type, value)}
+                    mode={input.type === 'password' ? 'password' : undefined}
                     icon={input.icon}
                     status={input.status}
                     suffix={iconMap[input.status]}
@@ -94,9 +98,7 @@ const LoginForm = () => {
             ...formData,
             userName: formData.userName
         }).then(res => {
-            console.log(res, '登录')
             setToken(formData.userName)
-            // window.location.href = webSettings.defaultRouter
             navigate(webSettings.defaultRouter)
         })
     }
@@ -115,7 +117,7 @@ const LoginForm = () => {
                 </div>
                 <div className={`flex-row ${prefixCls}-form-body-menu`}>
                     <Button loading={loginLoading} theme="solid" size='large' onClick={submitForm}>{getFormatText('web.login.loginText')}</Button>
-                    <Button size='large'>{getFormatText('web.login.register')}</Button>
+                    <Button size='large' onClick={() => {setFormActive('register')}}>{getFormatText('web.login.register')}</Button>
                 </div>
                 <div className={`${prefixCls}-form-body-join`}>
                     <Text style={{color: 'rgba(var(--semi-grey-7), 1)'}}>{getFormatText('web.login.join')}</Text>
