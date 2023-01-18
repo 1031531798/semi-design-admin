@@ -11,6 +11,7 @@ interface RegisterFormProps {
 const RegisterForm = ({setFormActive}: RegisterFormProps) => {
     const prefixCls = usePrefixCls('login-register');
     const {Input} = Form
+    const [loading, setLoading] = useState(false)
     // form api
     let formApi: BaseFormApi
     const getFormApi = (api: BaseFormApi) => {
@@ -19,10 +20,14 @@ const RegisterForm = ({setFormActive}: RegisterFormProps) => {
 
     function handleRegister () {
         formApi.validate().then(() => {
+            setLoading(true)
             registerUser(formApi.getFormState().values).then(() => {
                 Toast.success('注册成功,请登录')
-                handleBack()
                 formApi.reset()
+                setLoading(false)
+                handleBack()
+            }).catch(() => {
+                setLoading(false)
             })
         })
     }
@@ -57,7 +62,7 @@ const RegisterForm = ({setFormActive}: RegisterFormProps) => {
                     {renderInput()}
                 </Row>
             </Form>
-            <Button size={"large"} block theme='solid' type='primary' style={{marginBottom: '20px', marginTop: '10px'}} onClick={handleRegister}>确认注册</Button>
+            <Button loading={loading} size={"large"} block theme='solid' type='primary' style={{marginBottom: '20px', marginTop: '10px'}} onClick={handleRegister}>确认注册</Button>
             <Button size={"large"} block theme='solid' type='tertiary' onClick={handleBack}>返回登录</Button>
         </div>
     )
