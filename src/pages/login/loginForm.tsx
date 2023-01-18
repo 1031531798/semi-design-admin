@@ -14,6 +14,7 @@ import useStore from "../../store";
 import {webSettings} from "../../config/setting";
 import {loginUser} from "../../api/login";
 import { useNavigate} from "react-router-dom";
+import useUserStore from "../../store/user";
 const LoginForm = (props: {
     setFormActive: Function
 }) => {
@@ -22,6 +23,7 @@ const LoginForm = (props: {
     const {setFormActive} = props
     const {Text} = Typography
     const {setToken} = useStore()
+    const {setUserInfo} = useUserStore()
     const [loginLoading, setLoading] = useState(false)
     const navigate = useNavigate()
     const iconMap = {
@@ -98,8 +100,10 @@ const LoginForm = (props: {
         }).then(res => {
             const {data} = res
             setToken(data.data.userToken)
+            setUserInfo(data.data)
+            setLoading(false)
             navigate(webSettings.defaultRouter)
-        }).finally(() => {
+        }).catch(() => {
             setLoading(false)
         })
     }

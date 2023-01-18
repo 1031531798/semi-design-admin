@@ -10,13 +10,8 @@ interface RegisterFormProps {
 }
 const RegisterForm = ({setFormActive}: RegisterFormProps) => {
     const prefixCls = usePrefixCls('login-register');
-    const [formData, setFormData] = useState<{
-        userName?: string
-        password?: string
-        confirmPassword?: string
-    }>({})
     const {Input} = Form
-    // form api7    xz
+    // form api
     let formApi: BaseFormApi
     const getFormApi = (api: BaseFormApi) => {
         formApi = api
@@ -24,7 +19,6 @@ const RegisterForm = ({setFormActive}: RegisterFormProps) => {
 
     function handleRegister () {
         formApi.validate().then(() => {
-            console.log('表单校验通过')
             registerUser(formApi.getFormState().values).then(() => {
                 Toast.success('注册成功,请登录')
                 handleBack()

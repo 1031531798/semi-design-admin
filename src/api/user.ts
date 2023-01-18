@@ -9,3 +9,11 @@ export function getUserPage (params: PagingType) {
         params
     })
 }
+
+// 获取用户详情
+export function getUserDetailByToken () {
+    return request({
+        method: 'get',
+        url: '/users/detail',
+    })
+}

@@ -5,15 +5,11 @@ import Logo from "../layout/components/sider/logo";
 import LoginBg from '@/assets/image/login/work.svg'
 import ColorMode from "../layout/components/header/colorMode";
 import LocaleMode from "../layout/components/header/localeMode";
-import {getUserPage} from "../../api/user";
 import {useState} from "react";
 import RegisterForm from "./registerForm";
 const Index = () => {
     const prefixCls = usePrefixCls('login')
     const [formActive, setFormActive] = useState('login')
-    getUserPage({limit: 10, page:1}).then((user) => {
-        console.log(user, '获取用户分页')
-    })
     function renderForm () {
         console.log(formActive)
         return formActive === 'login' ? <LoginForm setFormActive={setFormActive} /> : <RegisterForm setFormActive={setFormActive} />

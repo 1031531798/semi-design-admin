@@ -43,7 +43,6 @@ const useStore = create<StoreState>((set) => ({
   },
   // 菜单展开
   menuFold: false,
-  changeMenuFold: () => set((state: StoreState) => ({ menuFold: !state.menuFold })),
   // 语言
   localeMode: 'zh_CN',
   setLocaleMode: (mode: string) => set(() => ({ localeMode: mode })),

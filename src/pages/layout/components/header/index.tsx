@@ -1,15 +1,25 @@
-import { Nav, Avatar, Dropdown, Layout } from '@douyinfe/semi-ui';
+import {Nav, Avatar, Dropdown, Layout, Toast, Tooltip} from '@douyinfe/semi-ui';
 import { usePrefixCls } from '../../../../hook/useConfig';
 import HeaderNav from './headNav'
 import Tabs from './tabs'
 import ColorMode from "./colorMode";
 import LocaleMode from "./localeMode";
 import useStore from "../../../../store";
-
+import {useGo} from "../../../../hook/useGo";
+import useUserStore from "../../../../store/user";
+import {IconExit, IconArticle, IconSetting} from '@douyinfe/semi-icons'
+import GlobalSetting from "./globalSetting";
 const { Header } = Layout
 const Index = () => {
   const prefixCls = usePrefixCls('layout-header');
-  const {token} = useStore()
+  const {userInfo} = useUserStore()
+  const {setToken} = useStore();
+  const {go} = useGo()
+  function handleExit () {
+      setToken('')
+      Toast.success('退出成功')
+      go({path: '/login'})
+  }
   return (
     <Header className={prefixCls}>
       <Nav
@@ -20,19 +30,23 @@ const Index = () => {
         header={<HeaderNav></HeaderNav>}
         footer={
           <>
-            <ColorMode />
-            <LocaleMode />
-            <Dropdown
+              <ColorMode />
+              <GlobalSetting></GlobalSetting>
+              <LocaleMode />
+              <Dropdown
               position="bottom"
+              style={{
+                  width: '90px',
+              }}
               render={
                 <Dropdown.Menu>
-                  <Dropdown.Item>详情</Dropdown.Item>
-                  <Dropdown.Item>退出</Dropdown.Item>
+                  <Dropdown.Item icon={<IconArticle />}>详情</Dropdown.Item>
+                  <Dropdown.Item icon={<IconExit />} type="danger" onClick={handleExit}>退出</Dropdown.Item>
                 </Dropdown.Menu>
               }
             >
-              <Avatar size="small" color='light-blue' style={{ margin: 4 }}>{token?.slice(0, 2)}</Avatar>
-              <span>{token}</span>
+                <Avatar size="small" color='light-blue' style={{ margin: 4 }}>{userInfo?.userName?.slice(0, 2)}</Avatar>
+                <span>{userInfo?.userName}</span>
             </Dropdown>
           </>
         }
