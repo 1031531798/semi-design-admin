@@ -11,8 +11,18 @@ const Index = () => {
     const prefixCls = usePrefixCls('login')
     const [formActive, setFormActive] = useState('login')
     function renderForm () {
-        console.log(formActive)
-        return formActive === 'login' ? <LoginForm setFormActive={setFormActive} /> : <RegisterForm setFormActive={setFormActive} />
+        const isLogin: boolean = formActive === 'login'
+        const loginForm = (
+            <div className={`flex-row-center animate__animated animate__fadeInRight`} style={{flex: 1}}>
+                <LoginForm setFormActive={setFormActive} />
+            </div>
+        )
+        const registerForm = (
+            <div className={`flex-row-center animate__animated animate__fadeInLeft`} style={{flex: 1}}>
+                <RegisterForm setFormActive={setFormActive} />
+            </div>
+        )
+        return isLogin ? loginForm : registerForm
     }
     return (
         <div className={prefixCls}>

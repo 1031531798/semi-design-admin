@@ -7,7 +7,7 @@ import './styles/common.scss'
 import useStore from 'src/store';
 import zh_CN from '@douyinfe/semi-ui/lib/es/locale/source/zh_CN';
 import en_GB from '@douyinfe/semi-ui/lib/es/locale/source/en_GB';
-
+import 'animate.css';
 
 function App() {
 const locale: string = useStore(state => state.localeMode)
