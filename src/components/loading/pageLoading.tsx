@@ -8,7 +8,6 @@ interface FallbackMessageProps {
 const PageLoading = (
     {
         message,
-        description
     }: FallbackMessageProps
 ) => {
 	return (

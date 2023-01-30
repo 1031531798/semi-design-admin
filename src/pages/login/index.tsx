@@ -5,7 +5,7 @@ import Logo from "../layout/components/sider/logo";
 import LoginBg from '@/assets/image/login/work.svg'
 import ColorMode from "../layout/components/header/colorMode";
 import LocaleMode from "../layout/components/header/localeMode";
-import {useState} from "react";
+import React, {useState} from "react";
 import RegisterForm from "./registerForm";
 const Index = () => {
     const prefixCls = usePrefixCls('login')
