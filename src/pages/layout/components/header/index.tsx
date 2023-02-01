@@ -1,20 +1,25 @@
-import { useMemo, useState, useEffect } from 'react';
-import { Nav, Avatar, Dropdown, Select, Layout, Button, Tooltip } from '@douyinfe/semi-ui';
-import { IconLanguage, IconMoon, IconSun } from '@douyinfe/semi-icons';
+import {Nav, Avatar, Dropdown, Layout, Toast, Tooltip} from '@douyinfe/semi-ui';
 import { usePrefixCls } from '../../../../hook/useConfig';
 import HeaderNav from './headNav'
 import Tabs from './tabs'
-import useStore from 'src/store';
-import { ColorModeType } from '../../../../config/type';
-import { isString } from '../../../../utils/is';
-import { useLocale } from '../../../../locales';
 import ColorMode from "./colorMode";
 import LocaleMode from "./localeMode";
-
+import useStore from "../../../../store";
+import {useGo} from "../../../../hook/useGo";
+import useUserStore from "../../../../store/user";
+import {IconExit, IconArticle, IconSetting} from '@douyinfe/semi-icons'
+import GlobalSetting from "./globalSetting";
 const { Header } = Layout
 const Index = () => {
-  const prefixCls = usePrefixCls('layout-header')
-
+  const prefixCls = usePrefixCls('layout-header');
+  const {userInfo} = useUserStore()
+  const {setToken} = useStore();
+  const {go} = useGo()
+  function handleExit () {
+      setToken('')
+      Toast.success('退出成功')
+      go({path: '/login'})
+  }
   return (
     <Header className={prefixCls}>
       <Nav
@@ -25,19 +30,23 @@ const Index = () => {
         header={<HeaderNav></HeaderNav>}
         footer={
           <>
-            <ColorMode />
-            <LocaleMode />
-            <Dropdown
+              <ColorMode />
+              <GlobalSetting></GlobalSetting>
+              <LocaleMode />
+              <Dropdown
               position="bottom"
+              style={{
+                  width: '90px',
+              }}
               render={
                 <Dropdown.Menu>
-                  <Dropdown.Item>详情</Dropdown.Item>
-                  <Dropdown.Item>退出</Dropdown.Item>
+                  <Dropdown.Item icon={<IconArticle />}>详情</Dropdown.Item>
+                  <Dropdown.Item icon={<IconExit />} type="danger" onClick={handleExit}>退出</Dropdown.Item>
                 </Dropdown.Menu>
               }
             >
-              <Avatar size="small" color='light-blue' style={{ margin: 4 }}>BD</Avatar>
-              <span>Admin</span>
+                <Avatar size="small" color='light-blue' style={{ margin: 4 }}>{userInfo?.userName?.slice(0, 2)}</Avatar>
+                <span>{userInfo?.userName}</span>
             </Dropdown>
           </>
         }

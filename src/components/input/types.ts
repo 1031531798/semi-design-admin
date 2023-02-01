@@ -3,6 +3,7 @@ import {InputStatus} from "../../enum/common";
 
 export interface LoginInputProps {
     status: InputStatus
+    mode?: "password" | undefined
     placeholder?: string
     icon?: ReactNode
     suffix?: ReactNode
@@ -10,5 +11,5 @@ export interface LoginInputProps {
 }
 
 export interface LoginInputRenderProps extends LoginInputProps{
-    type: 'email' | 'password'
+    type: 'userName' | 'password'
 }

@@ -3,6 +3,7 @@
 html, body {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 #root, #app {
   width: 100%;
@@ -12,7 +13,6 @@ html, body {
 .flex-row {
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 .flex-column {
   display: flex;

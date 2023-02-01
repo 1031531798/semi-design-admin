@@ -1,4 +1,4 @@
-import { Spin, Banner } from '@douyinfe/semi-ui'
+import { Spin } from '@douyinfe/semi-ui'
 
 interface FallbackMessageProps {
 	message?: string
@@ -8,7 +8,6 @@ interface FallbackMessageProps {
 const PageLoading = (
     {
         message,
-        description
     }: FallbackMessageProps
 ) => {
 	return (
