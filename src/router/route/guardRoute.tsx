@@ -1,7 +1,5 @@
 import {useLocation, Navigate} from 'react-router-dom';
-import { menuList } from 'src/pages/layout/components/sider/data';
 import useStore from '../../store/index';
-import { findMenuByPath } from '../../utils/utils';
 import {webSettings} from "../../config/setting";
 import {DisposeRouteProps} from "./disposeRoute";
 import {Toast} from "@douyinfe/semi-ui";
@@ -10,6 +8,7 @@ import {Toast} from "@douyinfe/semi-ui";
 const GuardRoute = ({element}: DisposeRouteProps ) => {
   const {token} = useStore()
   const { pathname } = useLocation()
+  // token鉴权
   if (!token) {
     // 如果token不存在就返回login
     Toast.warning('token 不能为空')
