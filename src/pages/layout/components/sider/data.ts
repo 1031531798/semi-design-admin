@@ -15,10 +15,7 @@ export interface MenuItem {
 
 export const menuList: MenuItem[] = [
   {
-    itemKey: '1', text: 'web.menu.dashboard', icon: IconAppCenter, path: '/dashboard', items: [
-      { itemKey: '101', text: 'web.menu.dashboard.workbench', icon: IconBriefcase, path: '/dashboard/workbench' },
-      { itemKey: '102', text: 'web.menu.dashboard.analyse', icon: IconHistogram, path: '/dashboard/analyse' },
-    ]
+    itemKey: '1', text: 'web.menu.dashboard', icon: IconAppCenter, path: '/dashboard'
   },
   {
     itemKey: '3', text: 'web.menu.page', icon: IconGallery,path: '/pages', items: [
