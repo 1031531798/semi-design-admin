@@ -1,11 +1,12 @@
 import { usePrefixCls } from 'src/hook/useConfig';
+import {HomeCardList} from "./components/cardList";
 
 const Index = () => {
   const prefixCls = usePrefixCls('dashboard-workbench')
 
   return (
-    <div className={prefixCls}>
-      工作台
+    <div className={prefixCls + ' p-2'}>
+      <HomeCardList />
     </div>
   )
 }

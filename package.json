@@ -160,6 +160,7 @@
   "devDependencies": {
     "@types/gapi": "^0.0.43",
     "@types/lodash": "^4.14.181",
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "react-icons": "^4.8.0"
   }
 }

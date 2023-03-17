@@ -5,7 +5,7 @@ const webSettings: WebConfig = {
     width: 250
   },
   colorMode: ColorModeType.light,
-  defaultRouter: '/dashboard/workbench',
+  defaultRouter: '/dashboard',
   defaultTabs: [{
     tab: 'web.menu.dashboard', itemKey: '/dashboard'
   }]
