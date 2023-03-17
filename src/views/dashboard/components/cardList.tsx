@@ -2,7 +2,6 @@
 import {Col, Row} from "@douyinfe/semi-ui";
 import NumberCard from "../../../components/card/numberCard";
 import {IoWallet} from "react-icons/io5";
-import {GrMoney} from "react-icons/gr";
 import {GiReceiveMoney, GiPayMoney, GiTakeMyMoney} from "react-icons/gi";
 
 export const HomeCardList = () => {
@@ -14,7 +13,7 @@ export const HomeCardList = () => {
     ]
     return (
         <>
-            <Row type="flex" justify="space-around">
+            <Row type="flex" justify="space-between">
                 {cards.map(item => <Col span={5} key={item.title}>
                     <NumberCard icon={item.icon} value={item.value} title={item.title} />
                 </Col>)}
