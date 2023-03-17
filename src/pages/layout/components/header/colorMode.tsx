@@ -13,9 +13,13 @@ const ColorMode = () => {
     function setSemiColorMode () {
         const body = document.body;
         if (colorMode === ColorModeType.dark) {
+            // semi ui 暗黑模式
             body.setAttribute('theme-mode', 'dark');
+            // tailwindcss 暗黑模式
+            document.documentElement.classList.add('dark')
         }else {
             body.removeAttribute('theme-mode');
+            document.documentElement.classList.remove('dark')
         }
     }
     // 设置mode icon
