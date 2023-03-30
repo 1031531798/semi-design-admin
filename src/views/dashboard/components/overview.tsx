@@ -6,96 +6,79 @@ const Overview = () => {
     const colors = ['#5470C6', '#EE6666'];
     const chartOption: EChartsOption = {
         color: colors,
-        tooltip: {
-            trigger: 'none',
-            axisPointer: {
-                type: 'cross'
-            }
+        backgroundColor: "transparent",
+        legend: {
+
         },
-        legend: {},
+        tooltip: {
+            trigger: 'axis'
+        },
         grid: {
             top: 70,
             bottom: 50
         },
-        xAxis: [
-            {
-                type: 'category',
-                axisTick: {
-                    alignWithLabel: true
-                },
-                axisLine: {
-                    onZero: false,
-                    lineStyle: {
-                        color: colors[1]
-                    }
-                },
-                axisPointer: {
-                    label: {
-                        formatter: function (params) {
-                            return (
-                                'Precipitation  ' +
-                                params.value +
-                                (params.seriesData.length ? '：' + params.seriesData[0].data : '')
-                            );
-                        }
-                    }
-                },
-                // prettier-ignore
-                data: ['2016-1', '2016-2', '2016-3', '2016-4', '2016-5', '2016-6', '2016-7', '2016-8', '2016-9', '2016-10', '2016-11', '2016-12']
+        xAxis: [{
+            type: 'category',
+            axisTick: {
+                alignWithLabel: true,
+                show: false
             },
-            {
-                type: 'category',
-                axisTick: {
-                    alignWithLabel: true
-                },
-                axisLine: {
-                    onZero: false,
-                    lineStyle: {
-                        color: colors[0]
-                    }
-                },
-                axisPointer: {
-                    label: {
-                        formatter: function (params) {
-                            return (
-                                'Precipitation  ' +
-                                params.value +
-                                (params.seriesData.length ? '：' + params.seriesData[0].data : '')
-                            );
-                        }
-                    }
-                },
-                // prettier-ignore
-                data: ['2015-1', '2015-2', '2015-3', '2015-4', '2015-5', '2015-6', '2015-7', '2015-8', '2015-9', '2015-10', '2015-11', '2015-12']
-            }
-        ],
+            boundaryGap: false,
+            axisPointer: {
+                lineStyle: {
+                    type: 'dashed',
+                    color: '#1FCB4F'
+                }
+            },
+            data: ['一月', '二月', '三月', '四月', '五月','六月','七月','八月','九月','十月','十一月','十二月'],
+            axisLabel: {
+                padding: [20, 0, 0, 0] // 坐标轴刻度标签与轴线之间的上边距为 10 像素，其余方向为 0
+            },
+        }],
         yAxis: [
             {
-                type: 'value'
+                type: 'value',
+                axisLabel: {
+                    padding: [0, 20, 0, 0],
+                    formatter: '$ {value}'
+                }
             }
         ],
         series: [
             {
-                name: 'Precipitation(2015)',
+                name: '余额',
                 type: 'line',
-                xAxisIndex: 1,
                 smooth: true,
                 emphasis: {
-                    focus: 'series'
+                    focus: 'series',
+                    scale: 4,
+                },
+                lineStyle: {
+                  color: '#FFC01E'
+                },
+                itemStyle: {
+                    color: '#FFC01E'
                 },
                 data: [
-                    2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3
+                    40, 58, 60, 70, 75, 100, 110, 120, 135, 150, 170
                 ]
             },
             {
-                name: 'Precipitation(2016)',
+                name: '收益',
                 type: 'line',
                 smooth: true,
                 emphasis: {
-                    focus: 'series'
+                    focus: 'series',
+                    scale: 4
+                },
+                lineStyle: {
+                    color: '#1FCB4F'
+                },
+                itemStyle: {
+                    color: '#1FCB4F'
                 },
                 data: [
-                    3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7
+                    40, 18, 2, 10, 5, 25, 10, 10, 15, 15, 20
                 ]
             }
         ]

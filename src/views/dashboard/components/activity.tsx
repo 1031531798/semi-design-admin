@@ -31,6 +31,7 @@ const Activity = () => {
             toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
                 xAxisIndex: 0
         },
+        backgroundColor: "transparent",
         toolbox: {
             feature: {
                 magicType: {
