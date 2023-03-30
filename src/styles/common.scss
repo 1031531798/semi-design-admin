@@ -12,32 +12,3 @@ html, body {
   height: 100%;
   color: var(--semi-color-text-0)
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-}
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-.flex-row-center {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.flex-column-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}

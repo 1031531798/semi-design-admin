@@ -36,19 +36,19 @@ const LoginInput = (
     }
     // 获取 box 样式
     const boxClass = useMemo(() => {
-        return `login-input flex-row ${isActive ? 'login-input-active' : ''}`
+        return `login-input flex flex-row ${isActive ? 'login-input-active' : ''}`
     }, [isActive])
 
     return (
         <div className={boxClass}>
-            <div className={'login-input-icon flex-row-center'}>
+            <div className={'login-input-icon flex flex-row items-center justify-center'}>
                 {icon}
             </div>
             <div className={'login-input-box'}>
                 <label className={'login-input-box-label '}>{placeholder}</label>
                 <Input mode={mode} className={'login-semi-input'} onChange={inputChange} onFocus={inputFocus} onBlur={inputBlur} />
             </div>
-            <div className={'login-input-status flex-row-center'}>
+            <div className={'login-input-status flex flex-row items-center justify-center'}>
                 {suffix}
             </div>
         </div>

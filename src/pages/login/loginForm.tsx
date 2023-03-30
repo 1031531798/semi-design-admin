@@ -109,24 +109,24 @@ const LoginForm = (props: {
     }
 
     return (
-        <div className={`${prefixCls}-form flex-column`}>
+        <div className={`${prefixCls}-form flex flex-col`}>
             <div className={`${prefixCls}-form-head`}>
                 <h1>{getFormatText('web.login.welcome')}</h1>
                 <span>{getFormatText( 'web.login.desc')}</span>
             </div>
             <div className={`${prefixCls}-form-body`}>
                 {renderInputs()}
-                <div className={`flex-row ${prefixCls}-form-body-operate`}>
+                <div className={`flex flex-row ${prefixCls}-form-body-operate`}>
                     <Checkbox className={'remember-me'}>{getFormatText('web.login.remember')}</Checkbox>
                     <Text link>{getFormatText('web.login.forgetPassword')}</Text>
                 </div>
-                <div className={`flex-row ${prefixCls}-form-body-menu`}>
+                <div className={`flex flex-row ${prefixCls}-form-body-menu`}>
                     <Button loading={loginLoading} theme="solid" size='large' onClick={submitForm}>{getFormatText('web.login.loginText')}</Button>
                     <Button size='large' onClick={() => {setFormActive('register')}}>{getFormatText('web.login.register')}</Button>
                 </div>
                 <div className={`${prefixCls}-form-body-join`}>
                     <Text style={{color: 'rgba(var(--semi-grey-7), 1)'}}>{getFormatText('web.login.join')}</Text>
-                    <div style={{marginTop: '1rem'}} className={'flex-row'}>
+                    <div style={{marginTop: '1rem'}} className={'flex flex-row'}>
                         {renderJoinBox()}
                     </div>
                 </div>

@@ -25,10 +25,10 @@ const NumberCard = (props: NumberCardProp) => {
                     justifyContent: 'space-between'
             }}>
                 <div className={'flex flex-row w-full justify-between'}>
-                    <div className={'p-3 border rounded-lg border-gray-100 bg-gray-100 dark:border-gray-700 dark:bg-gray-700 flex flex-row align-middle justify-center m-5'}>
+                    <div className={'p-3 border rounded-lg border-gray-100 bg-gray-100 dark:border-gray-700 dark:bg-gray-700 flex flex-row items-center justify-center m-5'}>
                         {icon}
                     </div>
-                    <div className={'flex flex-column w-2/3'}>
+                    <div className={'flex flex-col w-2/3'}>
                         <span>{title}</span>
                         <span className={'pt-4 pb-4 text-4xl dark:text-white '}>
                             $
