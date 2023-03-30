@@ -27,6 +27,7 @@ const Index = () => {
     return list.map((menu: MenuItem) => {
       return {
         ...menu,
+        textId: menu.text,
         icon: menu.icon ? renderIcon(menu.icon) : null,
         text: formatMessage({ id: menu.text }),
         items: menu.items ? setMenuText(menu.items) : []
@@ -44,7 +45,8 @@ const Index = () => {
   }, [pathname])
   // 设置面包屑和标签页
   function setMenuHandle (data: any) {
-    const {path, text} = data
+    const {path, text, textId} = data
+
     if (!path) return
     const menuTree: MenuItem[] = findMenuByPath({
       menus: menuList,
@@ -64,7 +66,7 @@ const Index = () => {
     if (hasTab < 0 ) {
       setTabList([...tabList, {
         itemKey: path,
-        tab: text || '未知',
+        tab: textId || text || '未知',
         closable: true
       }])
     }

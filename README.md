@@ -19,3 +19,9 @@
 - [zustand](https://github.com/nuysoft/Mock) - 熟悉 状态管理插件
 - [react-transition-group](https://reactcommunity.org/react-transition-group/) - React动画插件
 - [Animate.css](https://animate.style/) - 动画库
+- [Tailwindcss]](https://tailwindcss.com/) 原子级 CSS 框架
+- [React icons]](https://react-icons.github.io/react-icons) 图标库
+
+
+
+

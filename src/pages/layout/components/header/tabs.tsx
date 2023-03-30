@@ -4,16 +4,23 @@ import useStore from 'src/store';
 import { TabProps } from '../../../../store/type';
 import { useLocation, useNavigate } from 'react-router-dom';
 import _ from 'lodash'
+import {useLocale} from "../../../../locales";
 
 const Index = () => {
   const tabList = useStore(state => state.tabList)
   const setTabList = useStore(state => state.setTabList)
   const navigate = useNavigate()
   const {pathname} = useLocation()
+  const {formatMessage, locale} = useLocale()
   const getTabList: TabProps[] = useMemo(() => {
-    console.log('tab list 更新')
-    return tabList
-  }, [tabList])
+    // 设置tabList 展示数据
+    return tabList.map(item => {
+      return {
+        ...item,
+        tab: formatMessage({id: item.tab}) // 国际化
+      }
+    })
+  }, [tabList, locale])
   // 点击标签
   const changeTab = (key: string) => {
     key && navigate(key)

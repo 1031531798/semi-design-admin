@@ -39,3 +39,15 @@ export function findMenuFieldByPath(config: PathFindProps): MenuItem[] {
   }
   return []
 }
+
+// 分割数字或者字符串
+export function numberSplit (value: string | number, carry: number = 3, split: string = ','): string {
+  let result = ''
+  value = value.toString()
+  for (let i = 1; i <= value.length; i++) {
+    const index = value.length - i
+    const str = i % carry === 0 && index != 0 ? split + value[index] : value[index]
+      result = str + result
+  }
+  return result || value
+}
