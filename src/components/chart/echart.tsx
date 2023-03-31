@@ -12,7 +12,7 @@ const EChart = (props: EChartProps) => {
     let myEChart: echarts.EChartsType | null = null
     useEffect(() => {
         if (eChartRef.current) {
-            myEChart = echarts.init(eChartRef.current, colorMode);
+            myEChart = echarts.init(eChartRef.current, colorMode)
             myEChart.setOption(option)
             myEChart.resize()
             // resize 自适应

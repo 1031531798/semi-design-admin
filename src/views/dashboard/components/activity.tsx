@@ -3,88 +3,78 @@ import EChart from "../../../components/chart/echart";
 import {EChartsOption} from "echarts";
 
 const Activity = () => {
-    const colors = ['#5470C6', '#EE6666'];
-    let xAxisData = [];
-    let data1 = [];
-    let data2 = [];
-    let data3 = [];
-    let data4 = [];
-    for (let i = 0; i < 10; i++) {
-        xAxisData.push('Class' + i);
-        data1.push(+(Math.random() * 2).toFixed(2));
-        data2.push(+(Math.random() * 5).toFixed(2));
-        data3.push(+(Math.random() + 0.3).toFixed(2));
-        data4.push(+Math.random().toFixed(2));
-    }
-    var emphasisStyle = {
+    let emphasisStyle = {
         itemStyle: {
             shadowBlur: 10,
             shadowColor: 'rgba(0,0,0,0.3)'
         }
     };
     const chartOption: EChartsOption = {
-        legend: {
-            data: ['bar', 'bar2', 'bar3', 'bar4'],
-                left: '10%'
-        },
-        brush: {
-            toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
-                xAxisIndex: 0
-        },
         backgroundColor: "transparent",
-        toolbox: {
-            feature: {
-                magicType: {
-                    type: ['stack']
-                },
-                dataView: {}
+        legend: {
+            right: 0,
+            icon: 'circle',
+            itemGap: 30,
+            textStyle: {
+                fontSize: 14,
+                padding: [25, 0, 0, 0],
+                height: 50,
             }
         },
         tooltip: {},
         xAxis: {
-            data: xAxisData,
-                name: 'X Axis',
-                axisLine: { onZero: true },
-            splitLine: { show: false },
-            splitArea: { show: false }
+            axisTick: {
+                alignWithLabel: true,
+                show: false
+            },
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
         },
-        yAxis: {},
-        grid: {
-            bottom: 100
-        },
+        yAxis: [
+            {
+                type: 'value',
+                axisLabel: {
+                    padding: [0, 20, 0, 0],
+                    formatter: '$ {value}'
+                }
+            }
+        ],
         series: [
             {
-                name: 'bar',
+                name: '费用',
                 type: 'bar',
-                stack: 'one',
+                // stack: 'one',
                 emphasis: emphasisStyle,
-                data: data1
+                data: [22, 33, 55, 66, 55, 33, 44].map(item => {
+                    return {
+                        value: item,
+                    }
+                }),
+                itemStyle: {
+                    color: '#FFC01E',
+                    borderRadius: [5, 5, 0, 0]
+                },
+                barWidth: 15,
             },
             {
-                name: 'bar2',
+                name: '收益',
                 type: 'bar',
-                stack: 'one',
+                // stack: 'one',
                 emphasis: emphasisStyle,
-                data: data2
-            },
-            {
-                name: 'bar3',
-                type: 'bar',
-                stack: 'two',
-                emphasis: emphasisStyle,
-                data: data3
-            },
-            {
-                name: 'bar4',
-                type: 'bar',
-                stack: 'two',
-                emphasis: emphasisStyle,
-                data: data4
+                itemStyle: {
+                    color: '#1FCB4F',
+                    borderRadius: [5, 5, 0, 0]
+                },
+                barWidth: 15,
+                data: [123,44, 22, 33, 12, 33, 22].map(item => {
+                    return {
+                        value: item,
+                    }
+                })
             }
         ]
     }
     return (
-        <Card title='Overview' className={'w-full flex flex-col flex-grow mt-5 mr-5'} bordered={false} headerLine={false} bodyStyle={{
+        <Card title='Activity' className={'w-full flex flex-col flex-grow mt-5 mr-5'} bordered={false} headerLine={false} bodyStyle={{
             width: '100%',
             height: '100%'
         }}>

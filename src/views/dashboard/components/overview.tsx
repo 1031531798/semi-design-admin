@@ -8,7 +8,14 @@ const Overview = () => {
         color: colors,
         backgroundColor: "transparent",
         legend: {
-            right: 120
+            right: 120,
+            icon: 'circle',
+            itemGap: 30,
+            textStyle: {
+                fontSize: 14,
+                padding: [25, 0, 0, 0],
+                height: 50,
+            }
         },
         tooltip: {
             trigger: 'axis'
