@@ -15,6 +15,11 @@ const EChart = (props: EChartProps) => {
             myEChart = echarts.init(eChartRef.current, colorMode);
             myEChart.setOption(option)
             myEChart.resize()
+            // resize 自适应
+            const resizeObserve = new ResizeObserver((entries, observer) => {
+                myEChart?.resize()
+            })
+            resizeObserve.observe(eChartRef.current)
         }
     }, [])
     return(

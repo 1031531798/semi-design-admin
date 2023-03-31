@@ -14,7 +14,7 @@ const Index = () => {
           <Row gutter={20} type="flex" className={'flex-grow pt-10 pb-10'}>
               <Col className={'flex flex-col flex-grow h-full'} span={16}>
                   <Overview />
-                  <div className={'flex flex-grow flex-row'}>
+                  <div className={'flex flex-grow flex-row h-1/2'}>
                       <Activity />
                       <Payment />
                   </div>

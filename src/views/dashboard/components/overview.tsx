@@ -8,7 +8,7 @@ const Overview = () => {
         color: colors,
         backgroundColor: "transparent",
         legend: {
-
+            right: 120
         },
         tooltip: {
             trigger: 'axis'
@@ -84,7 +84,7 @@ const Overview = () => {
         ]
     }
     return (
-        <Card title='Overview' className={'flex flex-col flex-grow'} bordered={false} headerLine={false} bodyStyle={{
+        <Card title='Overview' className={'flex flex-col flex-grow h-1/2'} bordered={false} headerLine={false} bodyStyle={{
             width: '100%',
             height: '100%'
         }}>
