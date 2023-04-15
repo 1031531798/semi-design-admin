@@ -43,8 +43,8 @@ const Payment = () => {
         tooltip: {},
         xAxis: {
             data: xAxisData,
-                name: 'X Axis',
-                axisLine: { onZero: true },
+            name: 'X Axis',
+            axisLine: { onZero: true },
             splitLine: { show: false },
             splitArea: { show: false }
         },

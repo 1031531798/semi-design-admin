@@ -68,12 +68,14 @@ const Overview = () => {
                 },
                 data: [
                     40, 58, 60, 70, 75, 100, 110, 120, 135, 150, 170
-                ]
+                ],
+                animation: true
             },
             {
                 name: '收益',
                 type: 'line',
                 smooth: true,
+                animation: true,
                 emphasis: {
                     focus: 'series',
                     scale: 4

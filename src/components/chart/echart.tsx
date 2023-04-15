@@ -13,11 +13,12 @@ const EChart = (props: EChartProps) => {
     useEffect(() => {
         if (eChartRef.current) {
             myEChart = echarts.init(eChartRef.current, colorMode)
-            myEChart.setOption(option)
-            myEChart.resize()
             // resize 自适应
             const resizeObserve = new ResizeObserver((entries, observer) => {
                 myEChart?.resize()
+                setTimeout(() => {
+                    myEChart?.setOption(option)
+                })
             })
             resizeObserve.observe(eChartRef.current)
         }
