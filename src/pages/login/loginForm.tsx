@@ -54,7 +54,7 @@ const LoginForm = (props: {
     function renderInputs () {
         const inputList:LoginInputRenderProps[] = [
             {type: 'userName', icon: <IconUser size={'inherit'} />, status: statusMap.userName, placeholder: getFormatText('web.login.userName')},
-            {type: 'password', icon: <IconLockStroked size={'inherit'} />, status: statusMap.password, placeholder: getFormatText('web.login.password')},
+            {type: 'password', icon: <IconLockStroked size={'inherit'} />, enterEvent: submitForm, status: statusMap.password, placeholder: getFormatText('web.login.password')},
         ]
         return inputList.map((input) => {
             return (
@@ -63,6 +63,7 @@ const LoginForm = (props: {
                     changeData={(value:string) => changeFormData(input.type, value)}
                     mode={input.type === 'password' ? 'password' : undefined}
                     icon={input.icon}
+                    enterEvent={input.enterEvent}
                     status={input.status}
                     suffix={iconMap[input.status]}
                     placeholder={input.placeholder}

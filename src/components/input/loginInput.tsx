@@ -3,16 +3,14 @@ import './loginInput.scss'
 import {Input} from "@douyinfe/semi-ui";
 import {LoginInputProps} from "./types";
 
-
-
-
 const LoginInput = (
     {
         mode,
         icon,
         suffix,
         placeholder,
-        changeData
+        changeData,
+        enterEvent
     }: LoginInputProps
 ) => {
     const [inputValue, setInputValue] = useState('');
@@ -46,7 +44,7 @@ const LoginInput = (
             </div>
             <div className={'login-input-box'}>
                 <label className={'login-input-box-label '}>{placeholder}</label>
-                <Input mode={mode} className={'login-semi-input'} onChange={inputChange} onFocus={inputFocus} onBlur={inputBlur} />
+                <Input mode={mode} className={'login-semi-input'} onEnterPress={enterEvent} onChange={inputChange} onFocus={inputFocus} onBlur={inputBlur} />
             </div>
             <div className={'login-input-status flex flex-row items-center justify-center'}>
                 {suffix}
