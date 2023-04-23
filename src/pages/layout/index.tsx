@@ -18,7 +18,6 @@ const LayoutIndex = () => {
 	// 如果用户信息为空 则获取用户详情
 	if (!userInfo) {
 		getUserDetailByToken().then((res) => {
-			console.log(res)
 			const {data} = res.data
 			setUserInfo(data)
 		})
@@ -26,7 +25,7 @@ const LayoutIndex = () => {
 	return (
 		<Layout className={prefixCls}>
 			<Sider />
-			<Layout>
+			<Layout className={'overflow-hidden'}>
 				<Header />
 				<Content className={`${prefixCls}-content`}>
 					<Suspense fallback={<PageLoading />}>
