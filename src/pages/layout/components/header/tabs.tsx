@@ -1,10 +1,15 @@
 import { useMemo } from 'react';
-import { Tabs } from '@douyinfe/semi-ui';
+import { Dropdown, Tabs} from '@douyinfe/semi-ui';
 import useStore from 'src/store';
+import { IconChevronDown } from '@douyinfe/semi-icons';
 import { TabProps } from '../../../../store/type';
 import { useLocation, useNavigate } from 'react-router-dom';
 import _ from 'lodash'
 import {useLocale} from "../../../../locales";
+import { VscCloseAll} from "react-icons/vsc";
+import {AiOutlineColumnWidth} from 'react-icons/ai'
+import {BsFullscreen} from 'react-icons/bs'
+import {IoMdClose} from 'react-icons/io'
 
 const Index = () => {
   const tabList = useStore(state => state.tabList)
@@ -27,22 +32,61 @@ const Index = () => {
   }
   // 删除标签
   const closeTab = (key: string) => {
-    let list = _.cloneDeep(tabList)
-    list = list.filter(item => {
+    const list = tabList.filter(item => {
       return item.itemKey !== key
     })
     navigate(list[list.length - 1].itemKey)
     setTabList(list)
   }
+  // 关闭当前标签
+  function closeCurrent() {
+    closeTab(pathname)
+  }
+  // 关闭其他标签
+  function closeOther () {
+    const list = tabList.filter(item => {
+      return item.itemKey === pathname || !item.closable
+    })
+    setTabList(list)
+  }
+  // 关闭全部标签
+  function closeAll () {
+    const list = tabList.filter(item => {
+      return !item.closable
+    })
+    navigate(list[list.length - 1].itemKey)
+    setTabList(list)
+  }
   return (
-    <Tabs
-      type="card"
-      collapsible
-      activeKey={pathname}
-      onChange={changeTab}
-      onTabClose={closeTab}
-      tabList={getTabList}
-    ></Tabs>
+      <div className={'flex flex-row items-center'}>
+        <Tabs
+            style={{width: 'calc(100% - 40px)'}}
+            type="card"
+            collapsible
+            activeKey={pathname}
+            onChange={changeTab}
+            onTabClose={closeTab}
+            tabList={getTabList}
+        ></Tabs>
+        <Dropdown
+            className={'h-full p-2'}
+            trigger={'click'}
+            position={'bottomLeft'}
+            render={
+              <Dropdown.Menu>
+                <Dropdown.Item icon={<IoMdClose />} onClick={closeCurrent}>关闭当前标签</Dropdown.Item>
+                <Dropdown.Item icon={<AiOutlineColumnWidth />} onClick={closeOther}>关闭其他标签</Dropdown.Item>
+                <Dropdown.Item icon={<VscCloseAll />} onClick={closeAll}>关闭全部标签</Dropdown.Item>
+                <Dropdown.Item icon={<BsFullscreen />}>全屏</Dropdown.Item>
+              </Dropdown.Menu>
+            }
+        >
+          <div className={' h-full cursor-pointer'} style={{ marginTop: "2px", borderBottom: "1px solid var(--semi-color-border)"}}>
+            <IconChevronDown  />
+          </div>
+        </Dropdown>
+      </div>
+
   )
 }
 
