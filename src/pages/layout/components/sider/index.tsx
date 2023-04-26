@@ -34,11 +34,14 @@ const Index = () => {
       }
     })
   }
+  // 设置选中菜单 根据路由变化
   const getMenuSelect = useMemo(() => {
     const menu = findMenuByPath({
       path: pathname,
       menus: menuList
     })
+    // 设置面包屑数据
+    setOpenRouter(menu)
     return menu.map(item => {
       return item.itemKey
     })

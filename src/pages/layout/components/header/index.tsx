@@ -1,4 +1,4 @@
-import {Nav, Avatar, Dropdown, Layout, Toast, Tooltip} from '@douyinfe/semi-ui';
+import {Nav, Avatar, Dropdown, Layout, Toast} from '@douyinfe/semi-ui';
 import { usePrefixCls } from '../../../../hook/useConfig';
 import HeaderNav from './headNav'
 import Tabs from './tabs'
@@ -7,7 +7,7 @@ import LocaleMode from "./localeMode";
 import useStore from "../../../../store";
 import {useGo} from "../../../../hook/useGo";
 import useUserStore from "../../../../store/user";
-import {IconExit, IconArticle, IconSetting} from '@douyinfe/semi-icons'
+import {IconExit, IconArticle} from '@douyinfe/semi-icons'
 import GlobalSetting from "./globalSetting";
 const { Header } = Layout
 const Index = () => {

@@ -8,6 +8,7 @@ export interface LoginInputProps {
     icon?: ReactNode
     suffix?: ReactNode
     changeData?: (value: string) => void
+    enterEvent?: () =>  void
 }
 
 export interface LoginInputRenderProps extends LoginInputProps{

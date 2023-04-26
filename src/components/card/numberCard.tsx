@@ -3,6 +3,7 @@ import {CardProps} from "@douyinfe/semi-ui/lib/es/card";
 import {ReactNode} from "react";
 import NumberAnimate from "../NumberAnimate";
 import {numberSplit} from "../../utils/utils";
+import IconCard from "./iconCard";
 
 interface NumberCardProp extends CardProps {
     icon: ReactNode
@@ -25,10 +26,8 @@ const NumberCard = (props: NumberCardProp) => {
                     justifyContent: 'space-between'
             }}>
                 <div className={'flex flex-row w-full justify-between'}>
-                    <div className={'p-3 border rounded-lg border-gray-100 bg-gray-100 dark:border-gray-700 dark:bg-gray-700 flex flex-row align-middle justify-center m-5'}>
-                        {icon}
-                    </div>
-                    <div className={'flex flex-column w-2/3'}>
+                    <IconCard icon={icon} />
+                    <div className={'flex flex-col w-2/3'}>
                         <span>{title}</span>
                         <span className={'pt-4 pb-4 text-4xl dark:text-white '}>
                             $

@@ -11,7 +11,7 @@ const PageLoading = (
     }: FallbackMessageProps
 ) => {
 	return (
-		<div className={'flex-row-center'}>
+		<div className={'flex flex-row align-middle justify-center'}>
 			<Spin tip={message} />
 		</div>
 	)

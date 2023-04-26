@@ -55,7 +55,7 @@ const RegisterForm = ({setFormActive}: RegisterFormProps) => {
 
     }
     return (
-        <div className={`${prefixCls} flex-column`}>
+        <div className={`${prefixCls} flex flex-col`}>
             <h2>注册账号</h2>
             <Form getFormApi={getFormApi}>
                 <Row>
