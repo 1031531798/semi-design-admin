@@ -13,28 +13,26 @@ const NumberAnimate = (props: NumberAnimateProps) => {
     let {start = 0, end, time = 3000, delay = 0, className, formatter} = props;
     const total = isString(end) ? parseInt(end) : end
     const [value , setValue] = useState<number | string>(start)
-    // 处理数字函数
-    const transformNumber = useMemo(() => {
-        return formatter ? formatter(value) : value
-    }, [value])
+    let frameId: number | null = null
     useEffect(() => {
         // 延迟
         setTimeout(() => {
-            requestAnimationFrame(changeValue)
+            frameId = requestAnimationFrame(changeValue)
         }, delay)
+        return () => {frameId && cancelAnimationFrame(frameId)}
     }, [])
     function changeValue () {
         const add = Math.floor(total / (time / 20))
         start = start + add > total ? total : start + add
-        setValue(start)
+        setValue(formatter ? formatter(start) : start)
         if (start < total) {
-            requestAnimationFrame(changeValue)
+            frameId = requestAnimationFrame(changeValue)
         }
     }
     return (
         <>
             <span className={className}>
-                {transformNumber}
+                {value}
             </span>
         </>
     )
