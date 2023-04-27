@@ -9,7 +9,7 @@ import React, {useState} from "react";
 import RegisterForm from "./registerForm";
 // 是否第一次加载
 let firstShow = true
-const Index = () => {
+const Login = () => {
     const prefixCls = usePrefixCls('login')
     const [formActive, setFormActive] = useState('login')
     function renderForm () {
@@ -61,4 +61,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Login

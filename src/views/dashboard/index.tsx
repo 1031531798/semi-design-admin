@@ -5,7 +5,7 @@ import Overview from "./components/overview";
 import Activity from "./components/activity";
 import Payment from "./components/payment";
 
-const Index = () => {
+const Dashboard = () => {
   const prefixCls = usePrefixCls('dashboard-workbench')
 
   return (
@@ -20,11 +20,10 @@ const Index = () => {
                   </div>
               </Col>
               <Col span={8}>
-                <div>asdasdsad</div>
               </Col>
           </Row>
       </div>
   )
 }
 
-export default Index
+export default Dashboard

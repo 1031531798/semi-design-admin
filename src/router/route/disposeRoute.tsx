@@ -22,7 +22,6 @@ const DisposeRoute = (
     }: DisposeRouteProps
 ) => {
 	const { formatMessage } = useLocale()
-	const { pathname } = useLocation()
 	const RouteComponents = auth ? GuardRoute : getComponent
 	// 根据titleId过滤不需要的路由
 	if (!tabsFilter.includes(titleId)) {

@@ -10,7 +10,7 @@ import useUserStore from "../../../../store/user";
 import {IconExit, IconArticle} from '@douyinfe/semi-icons'
 import GlobalSetting from "./globalSetting";
 const { Header } = Layout
-const Index = () => {
+const HeaderIndex = () => {
   const prefixCls = usePrefixCls('layout-header');
   const {userInfo} = useUserStore()
   const {setToken} = useStore();
@@ -56,4 +56,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default HeaderIndex

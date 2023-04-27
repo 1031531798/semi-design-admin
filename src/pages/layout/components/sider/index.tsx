@@ -10,7 +10,7 @@ import useCache from '../../../../hook/useCache';
 import { CacheEnum } from '../../../../enum/cache';
 const { Sider } = Layout
 
-const Index = () => {
+const SiderIndex = () => {
   const prefixCls = usePrefixCls('layout-sider')
   const { setCache } = useCache()
   const { pathname } = useLocation()
@@ -120,4 +120,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default SiderIndex

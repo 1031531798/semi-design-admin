@@ -4,7 +4,7 @@ import useStore from 'src/store';
 import { useLocale } from '../../../../locales';
 import { MenuItem } from 'src/pages/layout/components/sider/data';
 
-const Index = () => {
+const HeaderNav = () => {
   const prefixCls = usePrefixCls('header-breadcrumb')
   const openRouterList = useStore(state => state.openRouterList)
   const { formatMessage } = useLocale()
@@ -25,4 +25,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default HeaderNav

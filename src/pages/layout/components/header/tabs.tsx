@@ -1,17 +1,16 @@
 import { useMemo } from 'react';
-import { Dropdown, Tabs} from '@douyinfe/semi-ui';
+import {Dropdown, TabPane, Tabs} from '@douyinfe/semi-ui';
 import useStore from 'src/store';
 import { IconChevronDown } from '@douyinfe/semi-icons';
 import { TabProps } from '../../../../store/type';
 import { useLocation, useNavigate } from 'react-router-dom';
-import _ from 'lodash'
 import {useLocale} from "../../../../locales";
 import { VscCloseAll} from "react-icons/vsc";
 import {AiOutlineColumnWidth} from 'react-icons/ai'
 import {BsFullscreen} from 'react-icons/bs'
 import {IoMdClose} from 'react-icons/io'
 
-const Index = () => {
+const HeaderTabs = () => {
   const tabList = useStore(state => state.tabList)
   const setTabList = useStore(state => state.setTabList)
   const navigate = useNavigate()
@@ -57,6 +56,9 @@ const Index = () => {
     navigate(list[list.length - 1].itemKey)
     setTabList(list)
   }
+  function openContextMenu () {
+    console.log('openContextMenu')
+  }
   return (
       <div className={'flex flex-row items-center'}>
         <Tabs
@@ -67,7 +69,13 @@ const Index = () => {
             onChange={changeTab}
             onTabClose={closeTab}
             tabList={getTabList}
-        ></Tabs>
+        >
+          {getTabList.map(item => {
+            return <span key={item.itemKey} onClick={openContextMenu}>
+              <TabPane {...item}></TabPane>
+            </span>
+          })}
+        </Tabs>
         <Dropdown
             className={'h-full p-2'}
             trigger={'click'}
@@ -90,4 +98,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default HeaderTabs

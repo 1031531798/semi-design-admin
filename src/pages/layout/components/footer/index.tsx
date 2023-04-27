@@ -1,9 +1,9 @@
 import { Layout } from '@douyinfe/semi-ui'
 const {Footer} = Layout
-const Index = () => {
+const FooterIndex = () => {
   return (
     <Footer></Footer>
   )
 }
 
-export default Index
+export default FooterIndex
