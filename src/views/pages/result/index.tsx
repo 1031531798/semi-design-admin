@@ -1,6 +1,6 @@
 import { usePrefixCls } from 'src/hook/useConfig';
 
-const Index = () => {
+const PagesResult = () => {
   const prefixCls = usePrefixCls('pages-result')
   return (
     <div className={prefixCls}>
@@ -9,4 +9,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default PagesResult

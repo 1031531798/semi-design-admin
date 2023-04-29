@@ -1,4 +1,4 @@
-import React, { Suspense} from "react"
+import React, {Suspense, useEffect} from "react"
 import Header from './components/header'
 import Sider from './components/sider'
 import Footer from './components/footer'
@@ -15,13 +15,15 @@ const LayoutIndex = () => {
 	const prefixCls = usePrefixCls('layout')
 	const {userInfo, setUserInfo} = useUserStore()
 
-	// 如果用户信息为空 则获取用户详情
-	if (!userInfo) {
-		getUserDetailByToken().then((res) => {
-			const {data} = res.data
-			setUserInfo(data)
-		})
-	}
+	useEffect(() => {
+		// 如果用户信息为空 则获取用户详情
+		if (!userInfo) {
+			getUserDetailByToken().then((res) => {
+				const {data} = res.data
+				setUserInfo(data)
+			})
+		}
+	}, [])
 	return (
 		<Layout className={prefixCls}>
 			<Sider />

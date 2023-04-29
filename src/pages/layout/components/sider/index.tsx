@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import {useEffect, useMemo, useRef} from 'react'
 import { Layout, Nav } from '@douyinfe/semi-ui'
 import { usePrefixCls } from 'src/hook/useConfig';
 import { useLocale } from '../../../../locales';
@@ -10,7 +10,7 @@ import useCache from '../../../../hook/useCache';
 import { CacheEnum } from '../../../../enum/cache';
 const { Sider } = Layout
 
-const Index = () => {
+const SiderIndex = () => {
   const prefixCls = usePrefixCls('layout-sider')
   const { setCache } = useCache()
   const { pathname } = useLocation()
@@ -22,6 +22,15 @@ const Index = () => {
   const getMenu = useMemo(() => {
     return setMenuText(menuList)
   }, [menuList, localeMode])
+  const menuTree = useRef<MenuItem[]>([])
+  useEffect(() => {
+    menuTree.current = findMenuByPath({
+      path: pathname,
+      menus: menuList
+    })
+    // 设置面包屑数据
+    setOpenRouter(menuTree.current)
+  }, [pathname])
   // 菜单名国际化
   function setMenuText(list: MenuItem[]): MenuItem[] {
     return list.map((menu: MenuItem) => {
@@ -40,8 +49,6 @@ const Index = () => {
       path: pathname,
       menus: menuList
     })
-    // 设置面包屑数据
-    setOpenRouter(menu)
     return menu.map(item => {
       return item.itemKey
     })
@@ -51,16 +58,6 @@ const Index = () => {
     const {path, text, textId} = data
 
     if (!path) return
-    const menuTree: MenuItem[] = findMenuByPath({
-      menus: menuList,
-      path,
-    }).map((item: MenuItem) => {
-      return {
-        itemKey: item.itemKey,
-        path: item.path,
-        text: item.text
-      }
-    })
     // 判断tab 是否存在
     const hasTab = tabList.findIndex(item => {
       return item.itemKey === path
@@ -73,8 +70,7 @@ const Index = () => {
         closable: true
       }])
     }
-    // 设置面包屑数据
-    setOpenRouter(menuTree)
+
   }
   // 点击菜单
   function selectMenu(data: any) {
@@ -120,4 +116,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default SiderIndex

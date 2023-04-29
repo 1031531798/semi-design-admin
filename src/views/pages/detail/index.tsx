@@ -1,7 +1,7 @@
 import { usePrefixCls } from 'src/hook/useConfig';
 import { Select } from '@douyinfe/semi-ui';
 
-const Index = () => {
+const PagesDetail = () => {
   const prefixCls = usePrefixCls('pages-detail')
   return (
     <div className={prefixCls}>
@@ -27,4 +27,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default PagesDetail

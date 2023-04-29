@@ -1,12 +1,12 @@
-import { cacheSettings } from 'src/config/setting';
-import { isNullOrUnDef } from './is';
-import { AesEncryption } from './encryption';
+import { cacheSettings } from "src/config/setting";
+import { isNullOrUnDef } from "./is";
+import { AesEncryption } from "./encryption";
 export interface CacheConfig {
-  key: string,
-  storage: Storage,
-  value?: any,
-  iv?: string,
-  hasEncrypt?: boolean,
+  key: string;
+  storage: Storage;
+  value?: any;
+  iv?: string;
+  hasEncrypt?: boolean;
   timeout?: null | number;
 }
 export const createStorage = ({
@@ -17,7 +17,7 @@ export const createStorage = ({
   hasEncrypt = false,
 }: Partial<CacheConfig> = {}) => {
   if (hasEncrypt && [key.length, iv.length].some((item) => item !== 16)) {
-    throw new Error('密钥或iv必须为16位!');
+    throw new Error("密钥或iv必须为16位!");
   }
 
   const encryption = new AesEncryption({ key, iv });
@@ -51,7 +51,9 @@ export const createStorage = ({
       const stringData = JSON.stringify({
         value,
         time: Date.now(),
-        expire: !isNullOrUnDef(expire) ? new Date().getTime() + expire * 1000 : null,
+        expire: !isNullOrUnDef(expire)
+          ? new Date().getTime() + expire * 1000
+          : null,
       });
       const stringifyValue = this.hasEncrypt
         ? this.encryption.encryptByAES(stringData)
@@ -70,7 +72,9 @@ export const createStorage = ({
       if (!val) return def;
 
       try {
-        const decVal = this.hasEncrypt ? this.encryption.decryptByAES(val) : val;
+        const decVal = this.hasEncrypt
+          ? this.encryption.decryptByAES(val)
+          : val;
         const data = JSON.parse(decVal);
         const { value, expire } = data;
         if (isNullOrUnDef(expire) || expire >= new Date().getTime()) {

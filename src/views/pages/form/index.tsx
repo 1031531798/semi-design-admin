@@ -1,6 +1,6 @@
 import { usePrefixCls } from 'src/hook/useConfig';
 
-const Index = () => {
+const PagesForm = () => {
   const prefixCls = usePrefixCls('pages-form')
   return (
     <div className={prefixCls}>
@@ -9,4 +9,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default PagesForm

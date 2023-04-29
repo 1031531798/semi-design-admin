@@ -1,5 +1,5 @@
 import { usePrefixCls } from 'src/hook/useConfig';
-const Index = () => {
+const Logo = () => {
   const prefixCls = usePrefixCls('layout-logo')
   return (
     <div className={`${prefixCls} flex flex-row`}  style={{margin: '10px',height:'60px'}}>
@@ -9,4 +9,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default Logo

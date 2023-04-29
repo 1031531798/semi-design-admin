@@ -1,10 +1,10 @@
-import { encrypt, decrypt } from 'crypto-js/aes';
-import { parse } from 'crypto-js/enc-utf8';
-import pkcs7 from 'crypto-js/pad-pkcs7';
-import ECB from 'crypto-js/mode-ecb';
-import md5 from 'crypto-js/md5';
-import UTF8 from 'crypto-js/enc-utf8';
-import Base64 from 'crypto-js/enc-base64';
+import { encrypt, decrypt } from "crypto-js/aes";
+import { parse } from "crypto-js/enc-utf8";
+import pkcs7 from "crypto-js/pad-pkcs7";
+import ECB from "crypto-js/mode-ecb";
+import md5 from "crypto-js/md5";
+import UTF8 from "crypto-js/enc-utf8";
+import Base64 from "crypto-js/enc-base64";
 
 export interface EncryptionParams {
   key: string;
@@ -34,11 +34,11 @@ export class AesEncryption {
   }
 
   encryptByAES(cipherText: string) {
-    return encrypt(cipherText, this.key || '', this.getOptions).toString();
+    return encrypt(cipherText, this.key || "", this.getOptions).toString();
   }
 
   decryptByAES(cipherText: string) {
-    return decrypt(cipherText, this.key || '', this.getOptions).toString(UTF8);
+    return decrypt(cipherText, this.key || "", this.getOptions).toString(UTF8);
   }
 }
 
