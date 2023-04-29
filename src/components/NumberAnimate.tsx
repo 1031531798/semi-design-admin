@@ -13,15 +13,21 @@ const NumberAnimate = (props: NumberAnimateProps) => {
     let {start = 0, end, time = 3000, delay = 0, className, formatter} = props;
     const total = isString(end) ? parseInt(end) : end
     const [value , setValue] = useState<number | string>(start)
+    let timeoutId: NodeJS.Timeout | null = null
     let frameId: number | null = null
     useEffect(() => {
         // 延迟
-        setTimeout(() => {
+       timeoutId = setTimeout(() => {
             frameId = requestAnimationFrame(changeValue)
         }, delay)
-        return () => {frameId && cancelAnimationFrame(frameId)}
+        return () => {
+           // 卸载定时器
+           timeoutId && clearTimeout(timeoutId)
+           frameId && cancelAnimationFrame(frameId)
+       }
     }, [])
     function changeValue () {
+        console.log('changeValue')
         const add = Math.floor(total / (time / 20))
         start = start + add > total ? total : start + add
         setValue(formatter ? formatter(start) : start)
