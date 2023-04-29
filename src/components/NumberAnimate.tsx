@@ -27,7 +27,6 @@ const NumberAnimate = (props: NumberAnimateProps) => {
        }
     }, [])
     function changeValue () {
-        console.log('changeValue')
         const add = Math.floor(total / (time / 20))
         start = start + add > total ? total : start + add
         setValue(formatter ? formatter(start) : start)

@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
-    "@douyinfe/semi-ui": "^2.6.0",
+    "@douyinfe/semi-ui": "^2.34.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@reduxjs/toolkit": "^1.8.0",
     "@svgr/webpack": "^5.5.0",

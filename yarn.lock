@@ -1133,89 +1133,88 @@
   dependencies:
     postcss-value-parser "^4.2.0"
 
-"@douyinfe/semi-animation-react@2.6.0":
-  version "2.6.0"
-  resolved "https://registry.npmjs.org/@douyinfe/semi-animation-react/-/semi-animation-react-2.6.0.tgz"
-  integrity sha512-cP69C6SAlk83OITfIHCAZ1PItqcn0hPfwh00lq95B/ZUhSyBYF8kR8yJ53ZGsgC43Q8Ow+UIUzOJ+fEbfVRxeg==
+"@douyinfe/semi-animation-react@2.34.0":
+  version "2.34.0"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-animation-react/-/semi-animation-react-2.34.0.tgz#5535ecbb040cb0c95901c0c1a8da42b09ee71634"
+  integrity sha512-HhqHM6ftT+zetbnP0Y7ZXynkjBUw64FK/T5nsZidSN3ZcvJFSvefyWU9gJu2Ga+hv/hJCu5M1IBWjLhZwO5Mpw==
   dependencies:
-    "@babel/runtime-corejs3" "^7.15.4"
-    "@douyinfe/semi-animation" "2.6.0"
-    "@douyinfe/semi-animation-styled" "2.6.0"
+    "@douyinfe/semi-animation" "2.12.0"
+    "@douyinfe/semi-animation-styled" "2.23.2"
     classnames "^2.2.6"
 
-"@douyinfe/semi-animation-styled@2.6.0":
-  version "2.6.0"
-  resolved "https://registry.npmjs.org/@douyinfe/semi-animation-styled/-/semi-animation-styled-2.6.0.tgz"
-  integrity sha512-9tlbqF0dyQP5FQT2x3RL02YlpkYz7Dm4NxRronuzOmD5OGlKSf5E0DLHRBaf0y8YNa1AtK8be8z/sq9HibI84Q==
-  dependencies:
-    "@babel/runtime-corejs3" "^7.15.4"
+"@douyinfe/semi-animation-styled@2.23.2":
+  version "2.23.2"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-animation-styled/-/semi-animation-styled-2.23.2.tgz#f18bc074515441c297cc636ed98521e249d093c9"
+  integrity sha512-cKaA1yGHPF76Rx7EZDZicj+1oX1su2wnqb/UGFOTquAwqWmkTfgQ+EKxCd/N704WH+RtmGf4xbrJKpBvvcEdSQ==
 
-"@douyinfe/semi-animation@2.6.0":
-  version "2.6.0"
-  resolved "https://registry.npmjs.org/@douyinfe/semi-animation/-/semi-animation-2.6.0.tgz"
-  integrity sha512-kmf3tYkbb7/XxAG81MQaY5OEZ/kDi6NWEE86k70ogvImqmDtdXSyMQZ/SzPgmRdKS5q4Yqw1HJtSDeaqPaVlbA==
+"@douyinfe/semi-animation@2.12.0":
+  version "2.12.0"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-animation/-/semi-animation-2.12.0.tgz#51fe52d3911c2591a80a6e9fe96e6809c1511f13"
+  integrity sha512-OAfL9Nk38ZPqfdKm9k4cvVXXzm16ALI4LxGNZ0qfe2RCLLnYGB/hNzTctoTDjYD35dFv0yroh3qsXtZuP2xNdg==
   dependencies:
     "@babel/runtime-corejs3" "^7.15.4"
     bezier-easing "^2.1.0"
 
-"@douyinfe/semi-foundation@2.6.0":
-  version "2.6.0"
-  resolved "https://registry.npmjs.org/@douyinfe/semi-foundation/-/semi-foundation-2.6.0.tgz"
-  integrity sha512-jQ7b76NlJJLmwUc9LxMTZ5wafdtyZZhylTrO6h/cP3hR2Y9Cf8jfup3EyKy4LvvTz+s3admI/vpwDyonkVk4Eg==
+"@douyinfe/semi-animation@2.34.0":
+  version "2.34.0"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-animation/-/semi-animation-2.34.0.tgz#63b1039ab76985aa59284b0e9fba29e76c501a66"
+  integrity sha512-asV/RGWsREUIegZyZulVktzPNejI8b4MsIhjn4X6ihhh1LOkq5ENTQ6DKnjsb+lbewvoQ61/vId5IC3tf8Ufaw==
   dependencies:
-    "@babel/runtime-corejs3" "^7.15.4"
-    "@douyinfe/semi-animation" "2.6.0"
+    bezier-easing "^2.1.0"
+
+"@douyinfe/semi-foundation@2.34.0":
+  version "2.34.0"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-foundation/-/semi-foundation-2.34.0.tgz#4a324f93ab546983c5920b48888157a56d1ccb6e"
+  integrity sha512-0Q73V69j/VHNojPuehlsYOIRqSexklGNMtz/yMuWwUQisEFkVbYA02sGxMy/EgPiL8Au8xSPxCO4F2Yh0UeWCA==
+  dependencies:
+    "@douyinfe/semi-animation" "2.12.0"
     async-validator "^3.5.0"
     classnames "^2.2.6"
-    date-fns "^2.9.0"
-    date-fns-tz "^1.0.10"
+    date-fns "^2.29.3"
+    date-fns-tz "^1.3.8"
     lodash "^4.17.21"
     memoize-one "^5.2.1"
     scroll-into-view-if-needed "^2.2.24"
 
-"@douyinfe/semi-icons@2.6.0":
-  version "2.6.0"
-  resolved "https://registry.npmjs.org/@douyinfe/semi-icons/-/semi-icons-2.6.0.tgz"
-  integrity sha512-wL2uisgvF92jXN8ciXqElcQ5XT5H8zeLC6OKXKmuRTMC5U3K1zwDrs0JKTzeqyZdu9gP0d9+fngGMsgrSJRhtQ==
+"@douyinfe/semi-icons@2.34.0":
+  version "2.34.0"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-icons/-/semi-icons-2.34.0.tgz#e7824e6c4fc33179322c545b457aa32d611c0ef4"
+  integrity sha512-RHEgvmYwGqytXSfo1QeHQIAu3Av0PrEB4jFVbenjfjwwMzVS64A0yEOnqsLczBEO/mtzLxtaJpz8lhvHqjbLKw==
   dependencies:
-    "@babel/runtime-corejs3" "^7.15.4"
     classnames "^2.2.6"
 
-"@douyinfe/semi-illustrations@2.6.0":
-  version "2.6.0"
-  resolved "https://registry.npmjs.org/@douyinfe/semi-illustrations/-/semi-illustrations-2.6.0.tgz"
-  integrity sha512-221Pm+WDa2VclZqwqA2ydXIFKSENJAfRyHQWGfdOIbLrhUYCnTMMvXCbiKD6gc6ohAjMxupM9D/TfwN0hQ/ViA==
-  dependencies:
-    "@babel/runtime-corejs3" "^7.15.4"
+"@douyinfe/semi-illustrations@2.34.0":
+  version "2.34.0"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-illustrations/-/semi-illustrations-2.34.0.tgz#1eedec32dafec67be0b0ce9c5ddbf0ef7b5449a5"
+  integrity sha512-TOsJXz3d5HyZ4xML/ORfW60B7ts/ru399ePJOkznvWPQVfbAlzSeTQGJ8A4T12VJA6fXNovm7u4DKHvvqlaicQ==
 
-"@douyinfe/semi-theme-default@2.6.0":
-  version "2.6.0"
-  resolved "https://registry.npmjs.org/@douyinfe/semi-theme-default/-/semi-theme-default-2.6.0.tgz"
-  integrity sha512-yjR2RThlp/0Mp7QtBdcQxiJYd1Yg5nrSgIHPjtCe/eAkQYRX+YPbu0JPWQPA3r8xC/dzcyObuidqiGwIxPz9/g==
+"@douyinfe/semi-theme-default@2.34.0":
+  version "2.34.0"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-theme-default/-/semi-theme-default-2.34.0.tgz#292f82c150750ee151ef71a8ff14af8a1fd4ce59"
+  integrity sha512-Rv4upgz8gyCJaqJUj9/W9JwqYUb/Eyeqpt8IZK42G5Y3ltOzBPRuF4/P8mU8qRqVfnTMLjtsbyrvCCHMUTBN8w==
   dependencies:
     glob "^7.1.6"
 
-"@douyinfe/semi-ui@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.npmjs.org/@douyinfe/semi-ui/-/semi-ui-2.6.0.tgz"
-  integrity sha512-m6YGsQkrZkc2uTN6E3J5fL9INSGk8XKkAG8SlBT7C4unZGdoNkde5qvyga/cUniWSwK89GLXqWRDJzBrRpRAow==
+"@douyinfe/semi-ui@^2.34.0":
+  version "2.34.0"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-ui/-/semi-ui-2.34.0.tgz#7a32e198db79117af686b7df2202ea786492cf33"
+  integrity sha512-uUZmHRZB/NgRxcFg/nqO0qHOP5eS+2vf6BqEw66cl4CfvNp9CLvhsRw3m+j//dvESkf1XWC+zTm67S5wRh5s6w==
   dependencies:
-    "@babel/runtime-corejs3" "^7.15.4"
-    "@douyinfe/semi-animation" "2.6.0"
-    "@douyinfe/semi-animation-react" "2.6.0"
-    "@douyinfe/semi-foundation" "2.6.0"
-    "@douyinfe/semi-icons" "2.6.0"
-    "@douyinfe/semi-illustrations" "2.6.0"
-    "@douyinfe/semi-theme-default" "2.6.0"
-    "@types/react-window" "^1.8.2"
+    "@douyinfe/semi-animation" "2.34.0"
+    "@douyinfe/semi-animation-react" "2.34.0"
+    "@douyinfe/semi-foundation" "2.34.0"
+    "@douyinfe/semi-icons" "2.34.0"
+    "@douyinfe/semi-illustrations" "2.34.0"
+    "@douyinfe/semi-theme-default" "2.34.0"
     async-validator "^3.5.0"
     classnames "^2.2.6"
     copy-text-to-clipboard "^2.1.1"
-    date-fns "^2.9.0"
-    date-fns-tz "^1.0.10"
+    date-fns "^2.29.3"
+    date-fns-tz "^1.3.8"
     lodash "^4.17.21"
+    prop-types "^15.7.2"
     react-resizable "^1.8.0"
-    react-sortable-hoc "^1.11.0"
+    react-sortable-hoc "^2.0.0"
     react-window "^1.8.2"
     resize-observer-polyfill "^1.5.1"
     scroll-into-view-if-needed "^2.2.24"
@@ -2034,13 +2033,6 @@
   version "17.0.14"
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-17.0.14.tgz"
   integrity sha512-H03xwEP1oXmSfl3iobtmQ/2dHF5aBHr8aUMwyGZya6OW45G+xtdzmq6HkncefiBt5JU8DVyaWl/nWZbjZCnzAQ==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-window@^1.8.2":
-  version "1.8.5"
-  resolved "https://registry.npmjs.org/@types/react-window/-/react-window-1.8.5.tgz"
-  integrity sha512-V9q3CvhC9Jk9bWBOysPGaWy/Z0lxYcTXLtLipkt2cnRj1JOSFNF7wqGpkScSXMgBwC+fnVRg/7shwgddBG5ICw==
   dependencies:
     "@types/react" "*"
 
@@ -3652,20 +3644,15 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-date-fns-tz@^1.0.10:
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/date-fns-tz/-/date-fns-tz-1.3.0.tgz"
-  integrity sha512-r6ye6PmGEvkF467/41qzU71oGwv9kHTnV3vtSZdyV6VThwPID47ZH7FtR7zQWrhgOUWkYySm2ems2w6ZfNUqoA==
+date-fns-tz@^1.3.8:
+  version "1.3.8"
+  resolved "https://registry.npmmirror.com/date-fns-tz/-/date-fns-tz-1.3.8.tgz#083e3a4e1f19b7857fa0c18deea6c2bc46ded7b9"
+  integrity sha512-qwNXUFtMHTTU6CFSFjoJ80W8Fzzp24LntbjFFBgL/faqds4e5mo9mftoRLgr3Vi1trISsg4awSpYVsOQCRnapQ==
 
-date-fns@^2.29.1:
+date-fns@^2.29.1, date-fns@^2.29.3:
   version "2.29.3"
   resolved "https://registry.npmmirror.com/date-fns/-/date-fns-2.29.3.tgz#27402d2fc67eb442b511b70bbdf98e6411cd68a8"
   integrity sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==
-
-date-fns@^2.9.0:
-  version "2.28.0"
-  resolved "https://registry.npmjs.org/date-fns/-/date-fns-2.28.0.tgz"
-  integrity sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==
 
 debug@*, debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2:
   version "4.3.4"
@@ -7508,7 +7495,7 @@ prop-types@15.x, prop-types@^15.5.7, prop-types@^15.6.0:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
-prop-types@^15.8.1:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7729,10 +7716,10 @@ react-router@6.5.0:
   dependencies:
     "@remix-run/router" "1.1.0"
 
-react-sortable-hoc@^1.11.0:
-  version "1.11.0"
-  resolved "https://registry.npmjs.org/react-sortable-hoc/-/react-sortable-hoc-1.11.0.tgz"
-  integrity sha512-v1CDCvdfoR3zLGNp6qsBa4J1BWMEVH25+UKxF/RvQRh+mrB+emqtVHMgZ+WreUiKJoEaiwYoScaueIKhMVBHUg==
+react-sortable-hoc@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmmirror.com/react-sortable-hoc/-/react-sortable-hoc-2.0.0.tgz#f6780d8aa4b922a21f3e754af542f032677078b7"
+  integrity sha512-JZUw7hBsAHXK7PTyErJyI7SopSBFRcFHDjWW5SWjcugY0i6iH7f+eJkY8cJmGMlZ1C9xz1J3Vjz0plFpavVeRg==
   dependencies:
     "@babel/runtime" "^7.2.0"
     invariant "^2.2.4"
