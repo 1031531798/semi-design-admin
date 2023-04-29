@@ -1,9 +1,9 @@
-import {localesLogin} from "./login";
-import {localesMenu} from "./menu";
-import {localesSetting} from "./setting";
+import { localesLogin } from "./login";
+import { localesMenu } from "./menu";
+import { localesSetting } from "./setting";
 
 export default {
-    ...localesLogin,
-    ...localesMenu,
-    ...localesSetting
-}
+  ...localesLogin,
+  ...localesMenu,
+  ...localesSetting,
+};
