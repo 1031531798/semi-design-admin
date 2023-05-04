@@ -37,7 +37,6 @@ const SiderIndex = () => {
       return {
         ...menu,
         textId: menu.text,
-        icon: menu.icon ? renderIcon(menu.icon) : null,
         text: formatMessage({ id: menu.text }),
         items: menu.items ? setMenuText(menu.items) : []
       }
@@ -87,12 +86,6 @@ const SiderIndex = () => {
       value: [...data.openKeys],
       storage: sessionStorage,
     })
-  }
-  function renderIcon(icon: any) {
-    if (!icon) {
-      return null
-    }
-    return icon.render()
   }
   return (
     <Sider className={prefixCls}>

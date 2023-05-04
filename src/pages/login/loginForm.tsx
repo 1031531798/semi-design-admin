@@ -21,7 +21,7 @@ import { webSettings } from "../../config/setting";
 import { loginUser } from "../../api/login";
 import { useNavigate } from "react-router-dom";
 import useUserStore from "../../store/user";
-const LoginForm = (props: { setFormActive: Function }) => {
+const LoginForm = (props: { setFormActive: (active: string) => void }) => {
   const prefixCls = usePrefixCls("login-main-body");
   const { getFormatText } = useLocale();
   const { setFormActive } = props;
@@ -49,14 +49,14 @@ const LoginForm = (props: { setFormActive: Function }) => {
   });
   // 变更 输入框状态
   function changeStatus(field: "userName" | "password", value: InputStatus) {
-    let data = cloneDeep(statusMap);
+    const data = cloneDeep(statusMap);
     data[field] = value;
     setStatusMap(data);
   }
   const [formData, setFormData] = useState({ userName: "", password: "" });
   // 变更 form数据
   function changeFormData(field: "userName" | "password", value: string) {
-    let data = cloneDeep(formData);
+    const data = cloneDeep(formData);
     data[field] = value;
     setFormData(data);
   }
