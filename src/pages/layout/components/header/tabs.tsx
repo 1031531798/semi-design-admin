@@ -10,12 +10,14 @@ import { AiOutlineColumnWidth } from "react-icons/ai";
 import { BsFullscreen } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import ContextMenu from "../../../../components/contextMenu";
+import {useResizeObserver} from "../../../../hook/useResizeObserver";
 
 const HeaderTabs = () => {
   const tabList = useStore((state) => state.tabList);
   const setTabList = useStore((state) => state.setTabList);
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const {observe, unobserve} = useResizeObserver()
   const { formatMessage, locale } = useLocale();
   // 是否滚动标签页
   const [hasCollapsible, setHasCollapsible] = useState<boolean>(false);
@@ -37,23 +39,22 @@ const HeaderTabs = () => {
       }
     });
     // 设置标签页折叠
-    const resizeObserve = new ResizeObserver((entries, observer) => {
-      const viewDom = entries[0].target as HTMLDivElement;
-      const scrollDom = viewDom.getElementsByClassName(
-        showCollapsible ? "semi-overflow-list-scroll-wrapper" : "semi-tabs-bar"
-      )[0] as HTMLDivElement;
-      const show =  viewDom.scrollWidth - 40 < scrollDom.scrollWidth;
-      if (show !== showCollapsible) {
-        setHasCollapsible(show);
-        showCollapsible = show
-      }
-    });
     if (tabsRef.current) {
       // resize 自适应
-      resizeObserve.observe(tabsRef.current);
+      observe(tabsRef.current, (entries, observer) => {
+        const viewDom = entries[0].target as HTMLDivElement;
+        const scrollDom = viewDom.getElementsByClassName(
+          showCollapsible ? "semi-overflow-list-scroll-wrapper" : "semi-tabs-bar"
+        )[0] as HTMLDivElement;
+        const show =  viewDom.scrollWidth - 40 < scrollDom.scrollWidth;
+        if (show !== showCollapsible) {
+          setHasCollapsible(show);
+          showCollapsible = show
+        }
+      });
     }
     return () => {
-      tabsRef.current && resizeObserve.unobserve(tabsRef.current);
+      tabsRef.current && unobserve();
     };
   }, [tabList]);
   const getTabList: TabProps[] = useMemo(() => {
