@@ -9,6 +9,7 @@ import { useGo } from "../../../../hook/useGo";
 import useUserStore from "../../../../store/user";
 import { IconExit, IconArticle } from "@douyinfe/semi-icons";
 import GlobalSetting from "./globalSetting";
+import './header.scss'
 const { Header } = Layout;
 const HeaderIndex = () => {
   const prefixCls = usePrefixCls("layout-header");

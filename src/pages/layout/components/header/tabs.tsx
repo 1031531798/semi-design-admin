@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Dropdown, TabPane, Tabs } from "@douyinfe/semi-ui";
 import useStore from "src/store";
 import { IconChevronDown } from "@douyinfe/semi-icons";
@@ -17,15 +17,18 @@ const HeaderTabs = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { formatMessage, locale } = useLocale();
+  // 是否滚动标签页
+  const [hasCollapsible, setHasCollapsible] = useState<boolean>(false);
+  // useState 值在ResizeObserve的回调函数中不会引用正确的值 启用一个变量来记录当前的折叠状态
+  let showCollapsible = false
   const tabsRef = useRef<HTMLDivElement>(null);
-  const tabClass = "semi-tabs-tab";
+  const tabClass = "semi-tabs-item";
   useEffect(() => {
     setTimeout(() => {
       if (!tabsRef.current) return;
       const tabDomList = tabsRef?.current.getElementsByClassName(tabClass);
       if (tabDomList?.length) {
         for (const element of tabDomList) {
-          console.log(element.addEventListener);
           element.addEventListener("contextmenu", (e: Event) => {
             openContextMenu();
             e.preventDefault();
@@ -33,6 +36,25 @@ const HeaderTabs = () => {
         }
       }
     });
+    // 设置标签页折叠
+    const resizeObserve = new ResizeObserver((entries, observer) => {
+      const viewDom = entries[0].target as HTMLDivElement;
+      const scrollDom = viewDom.getElementsByClassName(
+        showCollapsible ? "semi-overflow-list-scroll-wrapper" : "semi-tabs-bar"
+      )[0] as HTMLDivElement;
+      const show =  viewDom.scrollWidth - 40 < scrollDom.scrollWidth;
+      if (show !== showCollapsible) {
+        setHasCollapsible(show);
+        showCollapsible = show
+      }
+    });
+    if (tabsRef.current) {
+      // resize 自适应
+      resizeObserve.observe(tabsRef.current);
+    }
+    return () => {
+      tabsRef.current && resizeObserve.unobserve(tabsRef.current);
+    };
   }, [tabList]);
   const getTabList: TabProps[] = useMemo(() => {
     // 设置tabList 展示数据
@@ -43,6 +65,7 @@ const HeaderTabs = () => {
       };
     });
   }, [tabList, locale]);
+
   // 点击标签
   const changeTab = (key: string) => {
     key && navigate(key);
@@ -77,12 +100,13 @@ const HeaderTabs = () => {
   function openContextMenu() {
     console.log("openContextMenu");
   }
+
   return (
     <div className={"flex flex-row items-center relative"} ref={tabsRef}>
       <Tabs
         style={{ width: "calc(100% - 40px)" }}
         type="card"
-        collapsible
+        collapsible={hasCollapsible}
         activeKey={pathname}
         onChange={changeTab}
         onTabClose={closeTab}
