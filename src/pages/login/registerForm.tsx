@@ -1,12 +1,12 @@
 import { usePrefixCls } from "../../hook/useConfig";
 import "./register.scss";
-import { Button, Form, Row, Toast, useFormState } from "@douyinfe/semi-ui";
+import { Button, Form, Row, Toast } from "@douyinfe/semi-ui";
 import { BaseFormApi } from "@douyinfe/semi-foundation/form/interface";
 import { useState } from "react";
-import { InputMode, InputProps } from "@douyinfe/semi-ui/lib/es/input";
+import { InputMode } from "@douyinfe/semi-ui/lib/es/input";
 import { registerUser } from "../../api/login";
 interface RegisterFormProps {
-  setFormActive: Function;
+  setFormActive: (active: string) => void;
 }
 const RegisterForm = ({ setFormActive }: RegisterFormProps) => {
   const prefixCls = usePrefixCls("login-register");

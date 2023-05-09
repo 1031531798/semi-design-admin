@@ -3,7 +3,9 @@ import { Button, Tooltip } from "@douyinfe/semi-ui";
 
 const GlobalSetting = () => {
   const tooltipText = "平台设置";
-  function openSetting() {}
+  function openSetting() {
+    console.log('click 平台设置')
+  }
   return (
     <Tooltip content={tooltipText}>
       <Button

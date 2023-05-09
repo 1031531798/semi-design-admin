@@ -23,7 +23,7 @@ const mql: MediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
 matchMode(mql)
 function matchMode(e: {matches: boolean, media: string}) {
   const body = document.body;
-  let colorMode = e.matches ? ColorModeType.dark : ColorModeType.light
+  const colorMode = e.matches ? ColorModeType.dark : ColorModeType.light
   if (e.matches) {
     if (!body.hasAttribute('theme-mode')) {
       body.setAttribute('theme-mode', 'dark');

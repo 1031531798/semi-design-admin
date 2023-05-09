@@ -1,0 +1,39 @@
+/* 右键菜单 */
+.contextmenu {
+  margin: 0;
+  background: #fff;
+  position: absolute;
+  list-style-type: none;
+  padding: 5px 0;
+  border-radius: 4px;
+  color: var(--el-text-color-primary);
+  font-weight: normal;
+  font-size: 13px;
+  white-space: nowrap;
+  outline: 0;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+  z-index: 10;
+  &-item {
+    cursor: pointer;
+    &:hover {
+      // background: var(--el-color-primary-light-9);
+      color: var(--el-color-primary);
+    }
+
+  }
+  &-disabled {
+    color: #999999;
+    cursor: not-allowed;
+  }
+  li {
+    width: 100%;
+    margin: 0;
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    svg {
+      display: block;
+      margin-right: 0.5em;
+    }
+  }
+}

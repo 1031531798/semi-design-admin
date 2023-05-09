@@ -10,7 +10,8 @@ interface NumberAnimateProps {
 }
 // 数字动画组件
 const NumberAnimate = (props: NumberAnimateProps) => {
-  let { start = 0, end, time = 3000, delay = 0, className, formatter } = props;
+  const { end, time = 3000, delay = 0, className, formatter } = props;
+  let {start = 0} = props;
   const total = isString(end) ? parseInt(end) : end;
   const [value, setValue] = useState<number | string>(start);
   let timeoutId: NodeJS.Timeout | null = null;

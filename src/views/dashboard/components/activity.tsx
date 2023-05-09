@@ -3,7 +3,7 @@ import EChart from "../../../components/chart/echart";
 import { EChartsOption } from "echarts";
 
 const Activity = () => {
-  let emphasisStyle = {
+  const emphasisStyle = {
     itemStyle: {
       shadowBlur: 10,
       shadowColor: "rgba(0,0,0,0.3)",
