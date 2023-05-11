@@ -24,7 +24,8 @@
 - [React icons](https://react-icons.github.io/react-icons) 图标库
 
 ## 预览
-线上地址：[https://semi-admin.vercel.app/](https://semi-admin.vercel.app/)
+### 线上地址：[semi-design-admin 预览站](http://www.linzijian.top:3100/login)
+不需要填写用户名密码
 
 ![img.png](public/img.png)
 
