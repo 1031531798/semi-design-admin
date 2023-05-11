@@ -7,32 +7,50 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useLocale } from "../../../../locales";
 import { VscCloseAll } from "react-icons/vsc";
 import { AiOutlineColumnWidth } from "react-icons/ai";
-import { BsFullscreen } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
+import { useResizeObserver } from "../../../../hook/useResizeObserver";
 import ContextMenu from "../../../../components/contextMenu";
-import {useResizeObserver} from "../../../../hook/useResizeObserver";
+import {ContextMenuInstance, ContextMenuItemProps} from "../../../../components/contextMenu/types";
 
 const HeaderTabs = () => {
   const tabList = useStore((state) => state.tabList);
   const setTabList = useStore((state) => state.setTabList);
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const {observe, unobserve} = useResizeObserver()
+  const { observe, unobserve } = useResizeObserver();
   const { formatMessage, locale } = useLocale();
+  // 标签栏事件
+  const tabsMenus: ContextMenuItemProps[] = [
+    { name: "关闭当前标签", icon: <IoMdClose />, onClick: closeCurrent },
+    {
+      name: "关闭其他标签",
+      icon: <AiOutlineColumnWidth />,
+      onClick: closeOther,
+    },
+    { name: "关闭全部标签", icon: <VscCloseAll />, onClick: closeAll },
+  ];
+  const [contextPosition, setContextPosition] = useState<{
+    x: number;
+    y: number;
+  }>({
+    x: 0,
+    y: 0,
+  });
   // 是否滚动标签页
   const [hasCollapsible, setHasCollapsible] = useState<boolean>(false);
   // useState 值在ResizeObserve的回调函数中不会引用正确的值 启用一个变量来记录当前的折叠状态
-  let showCollapsible = false
+  let showCollapsible = false;
+  const contextMenuRef = useRef<ContextMenuInstance>()
   const tabsRef = useRef<HTMLDivElement>(null);
-  const tabClass = "semi-tabs-item";
   useEffect(() => {
     setTimeout(() => {
       if (!tabsRef.current) return;
-      const tabDomList = tabsRef?.current.getElementsByClassName(tabClass);
+      const tabDomList =
+        tabsRef?.current.getElementsByClassName("semi-tabs-tab");
       if (tabDomList?.length) {
         for (const element of tabDomList) {
           element.addEventListener("contextmenu", (e: Event) => {
-            openContextMenu();
+            openContextMenu(e as MouseEvent, element as HTMLDivElement);
             e.preventDefault();
           });
         }
@@ -44,12 +62,14 @@ const HeaderTabs = () => {
       observe(tabsRef.current, (entries, observer) => {
         const viewDom = entries[0].target as HTMLDivElement;
         const scrollDom = viewDom.getElementsByClassName(
-          showCollapsible ? "semi-overflow-list-scroll-wrapper" : "semi-tabs-bar"
+          showCollapsible
+            ? "semi-overflow-list-scroll-wrapper"
+            : "semi-tabs-bar"
         )[0] as HTMLDivElement;
-        const show =  viewDom.scrollWidth - 40 < scrollDom.scrollWidth;
+        const show = viewDom.scrollWidth - 40 < scrollDom.scrollWidth;
         if (show !== showCollapsible) {
           setHasCollapsible(show);
-          showCollapsible = show
+          showCollapsible = show;
         }
       });
     }
@@ -98,8 +118,15 @@ const HeaderTabs = () => {
     navigate(list[list.length - 1].itemKey);
     setTabList(list);
   }
-  function openContextMenu() {
-    console.log("openContextMenu");
+  function openContextMenu(e: MouseEvent, element: HTMLDivElement) {
+    const { offsetX, offsetY } = e;
+    const offsetLeft = element?.offsetLeft || 0;
+    setContextPosition({
+      x: offsetX + offsetLeft,
+      y: offsetY + 10,
+    });
+
+    contextMenuRef?.current?.open()
   }
 
   return (
@@ -119,7 +146,6 @@ const HeaderTabs = () => {
               tab={item.tab}
               itemKey={item.itemKey}
               closable={item.closable}
-              className={tabClass}
             ></TabPane>
           );
         })}
@@ -130,16 +156,11 @@ const HeaderTabs = () => {
         position={"bottomLeft"}
         render={
           <Dropdown.Menu>
-            <Dropdown.Item icon={<IoMdClose />} onClick={closeCurrent}>
-              关闭当前标签
-            </Dropdown.Item>
-            <Dropdown.Item icon={<AiOutlineColumnWidth />} onClick={closeOther}>
-              关闭其他标签
-            </Dropdown.Item>
-            <Dropdown.Item icon={<VscCloseAll />} onClick={closeAll}>
-              关闭全部标签
-            </Dropdown.Item>
-            <Dropdown.Item icon={<BsFullscreen />}>全屏</Dropdown.Item>
+            {
+              tabsMenus.map(item => <Dropdown.Item key={item.name} icon={item.icon} onClick={item.onClick}>
+                {item.name}
+              </Dropdown.Item>)
+            }
           </Dropdown.Menu>
         }
       >
@@ -153,7 +174,12 @@ const HeaderTabs = () => {
           <IconChevronDown />
         </div>
       </Dropdown>
-      <ContextMenu x={1} y={2} visible={true} menuList={[]} />
+      <ContextMenu
+        ref={contextMenuRef}
+        x={contextPosition.x}
+        y={contextPosition.y}
+        menuList={tabsMenus}
+      />
     </div>
   );
 };

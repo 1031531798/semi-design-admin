@@ -11,7 +11,7 @@ const Dashboard = () => {
   return (
     <div className={prefixCls + " p-2 h-full flex flex-col"}>
       <HomeCardList />
-      <Row gutter={20} type="flex" className={"flex-grow pt-10 pb-10"}>
+      <Row gutter={20} type="flex" className={"flex-grow h-full pt-10 pb-10"}>
         <Col className={"flex flex-col flex-grow h-full"} span={16}>
           <Overview />
           <div className={"flex flex-grow flex-row h-1/2"}>

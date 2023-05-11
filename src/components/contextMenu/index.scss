@@ -31,6 +31,10 @@
     padding: 7px 12px;
     display: flex;
     align-items: center;
+    &:hover {
+      background-color: var(--semi-color-fill-0);
+      cursor: pointer;
+    }
     svg {
       display: block;
       margin-right: 0.5em;
