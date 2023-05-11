@@ -27,7 +27,7 @@ const LayoutIndex = () => {
   return (
     <Layout className={prefixCls}>
       <Sider />
-      <Layout className={"overflow-hidden"}>
+      <Layout className={"overflow-hidden flex flex-col"}>
         <Header />
         <Content className={`${prefixCls}-content`}>
           <Suspense fallback={<PageLoading />}>

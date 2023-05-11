@@ -1,14 +1,19 @@
-import {MouseEventHandler, ReactNode} from "react";
+import {MouseEventHandler, ReactNode, MutableRefObject} from "react";
 
 export type ContextMenuProps = {
+    ref: MutableRefObject<ContextMenuInstance>
     x: number;
     y: number;
-    visible: boolean;
-    menuList: ContextMenuItemProps[];
+    menuList?: ContextMenuItemProps[];
 }
 
 export type ContextMenuItemProps = {
     name: string;
     icon?: ReactNode;
-    onClick: (e: MouseEventHandler<HTMLLIElement>) => void;
+    onClick: MouseEventHandler<HTMLLIElement>;
+}
+// 实例方法
+export type ContextMenuInstance = {
+    open: () => void;
+    close: () => void;
 }
