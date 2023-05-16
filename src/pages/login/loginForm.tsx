@@ -31,7 +31,7 @@ const LoginForm = (props: { setFormActive: (active: string) => void }) => {
   const [loginLoading, setLoading] = useState(false);
   const navigate = useNavigate();
   const iconMap = {
-    [InputStatus.wait]: <span></span>,
+    [InputStatus.wait]: "",
     [InputStatus.success]: (
       <IconTickCircle style={{ color: "var(--semi-color-success)" }} />
     ),
