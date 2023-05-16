@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import NumberAnimate from "../NumberAnimate";
 import { Progress } from "@douyinfe/semi-ui";
-import { numberSplit } from "../../utils/utils";
+import { numberSplit } from "@/utils/utils";
 
 type ProgressCardProps = {
   title: string;
@@ -18,7 +18,10 @@ const ProgressCard = ({
   color,
   icon,
 }: ProgressCardProps) => {
-  const getPercent = (value / total) * 100;
+  const [percent, setPercent] = useState(0);
+  useEffect(() => {
+    setPercent((value / total) * 100);
+  });
   return (
     <div className={"flex flex-row items-center"}>
       {icon}
@@ -40,7 +43,7 @@ const ProgressCard = ({
         </div>
         <Progress
           stroke={color}
-          percent={getPercent}
+          percent={percent}
           style={{ height: "8px" }}
         ></Progress>
       </div>
