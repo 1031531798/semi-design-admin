@@ -1,6 +1,5 @@
 import GuardRoute from "./guardRoute";
-import useStore from "src/store";
-import { PathRouteProps, useLocation } from "react-router-dom";
+import { PathRouteProps } from "react-router-dom";
 import { useLocale } from "../../locales";
 export interface DisposeRouteProps extends PathRouteProps {
   titleId: string;
@@ -13,6 +12,7 @@ const getComponent = (props: any) => {
 const tabsFilter = ["home", "Login"];
 const DisposeRoute = ({ titleId, auth, ...props }: DisposeRouteProps) => {
   const { formatMessage } = useLocale();
+  // 是否需要鉴权
   const RouteComponents = auth ? GuardRoute : getComponent;
   // 根据titleId过滤不需要的路由
   if (!tabsFilter.includes(titleId)) {
