@@ -53,13 +53,13 @@ const LoginInput = ({
           onBlur={inputBlur}
         />
       </div>
-      <div
+      {suffix && <div
         className={
           "login-input-status flex flex-row items-center justify-center"
         }
       >
         {suffix}
-      </div>
+      </div>}
     </div>
   );
 };

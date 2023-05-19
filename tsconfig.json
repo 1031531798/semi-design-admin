@@ -16,7 +16,10 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": { // 路径映射配置，用于简化导入语句
+      "@/*": ["src/*"] // 将 @/* 映射到 src/*，例如 import MyComponent from '@/components/MyComponent'
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "build", "dist", "public"]

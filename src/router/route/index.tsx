@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import {lazy} from "react";
 import { RouteObject } from "react-router";
 import LayoutIndex from "../../pages/layout/index";
 import LoginView from "../../pages/login/index";

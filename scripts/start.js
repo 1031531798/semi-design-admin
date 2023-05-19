@@ -25,6 +25,7 @@ const {
   createCompiler,
   prepareProxy,
   prepareUrls,
+  printInstructions
 } = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
 const semver = require('semver');
@@ -117,6 +118,8 @@ checkBrowsers(paths.appPath, isInteractive)
     devServer.startCallback(() => {
       if (isInteractive) {
         clearConsole();
+        // 打印本地服务地址
+        printInstructions();
       }
 
       if (env.raw.FAST_REFRESH && semver.lt(react.version, '16.10.0')) {

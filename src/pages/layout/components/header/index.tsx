@@ -9,12 +9,14 @@ import { useGo } from "../../../../hook/useGo";
 import useUserStore from "../../../../store/user";
 import { IconExit, IconArticle } from "@douyinfe/semi-icons";
 import GlobalSetting from "./globalSetting";
-import './header.scss'
+import "./header.scss";
+import useSettingsStore from "@/store/settings";
 const { Header } = Layout;
 const HeaderIndex = () => {
   const prefixCls = usePrefixCls("layout-header");
   const { userInfo } = useUserStore();
   const { setToken } = useStore();
+  const { platformSetting } = useSettingsStore();
   const { go } = useGo();
   function handleExit() {
     setToken("");
@@ -28,7 +30,7 @@ const HeaderIndex = () => {
           width: "100%",
         }}
         mode={"horizontal"}
-        header={<HeaderNav></HeaderNav>}
+        header={platformSetting.showBreadcrumb && <HeaderNav></HeaderNav>}
         footer={
           <>
             <ColorMode />

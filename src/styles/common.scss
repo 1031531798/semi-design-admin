@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import "animateStyle.css";
 html, body {
   width: 100%;
   height: 100%;
@@ -14,4 +15,38 @@ html, body {
 }
 .semi-dropdown-item {
   white-space: nowrap;
+}
+
+/* 灰色模式 */
+.html-grey {
+  filter: grayscale(100%);
+}
+
+/* 色弱模式 */
+.html-weakness {
+  filter: invert(80%);
+}
+
+
+// 滚动条样式
+::-webkit-scrollbar,html::-webkit-scrollbar {
+  width: 8px;
+  height: 8px
+}
+
+::-webkit-scrollbar-track,html::-webkit-scrollbar-track {
+  background: transparent
+}
+
+::-webkit-scrollbar-corner,html::-webkit-scrollbar-corner {
+  background-color: transparent
+}
+
+::-webkit-scrollbar-thumb,html::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background: var(--semi-color-fill-2)
+}
+
+::-webkit-scrollbar-thumb:hover,html::-webkit-scrollbar-thumb:hover {
+  background: var(--semi-color-fill-1)
 }
