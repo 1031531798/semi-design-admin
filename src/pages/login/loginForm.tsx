@@ -139,20 +139,26 @@ const LoginForm = (props: { setFormActive: (active: string) => void }) => {
   }
   const submitForm = () => {
     setLoading(true);
-    loginUser({
-      ...formData,
-      userName: formData.userName,
-    })
-      .then((res) => {
-        const { data } = res;
-        setToken(data.data.userToken);
-        setUserInfo(data.data);
-        setLoading(false);
-        navigate(webSettings.defaultRouter);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    setTimeout(() => {
+      setToken("admin");
+      setUserInfo({ userName: "admin", password: '123', userToken: '123', createTime: new Date().getTime() + '' });
+      setLoading(false);
+      navigate(webSettings.defaultRouter);
+    }, 1000);
+    // loginUser({
+    //   ...formData,
+    //   userName: formData.userName,
+    // })
+    //   .then((res) => {
+    //     const { data } = res;
+    //     setToken(data.data.userToken);
+    //     setUserInfo(data.data);
+    //     setLoading(false);
+    //     navigate(webSettings.defaultRouter);
+    //   })
+    //   .catch(() => {
+    //     setLoading(false);
+    //   });
   };
 
   return (
