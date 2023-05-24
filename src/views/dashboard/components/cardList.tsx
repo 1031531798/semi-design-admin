@@ -31,7 +31,7 @@ export const HomeCardList = () => {
     <>
       <Row type="flex" justify="space-between">
         {cards.map((item) => (
-          <Col span={5} key={item.title}>
+          <Col style={{ marginBottom: '10px'}} xl={5} lg={12} md={12} sm={24} xs={24} key={item.title}>
             <NumberCard
               icon={item.icon}
               value={item.value}

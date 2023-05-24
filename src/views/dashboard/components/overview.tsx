@@ -105,13 +105,13 @@ const Overview = () => {
   };
   return (
     <Card
-      title="Overview"
+      title="总览"
       className={"flex flex-col flex-grow h-1/2"}
       bordered={false}
       headerLine={false}
       bodyStyle={{
         width: "100%",
-        height: "100%",
+        height: "300px",
       }}
     >
       <EChart option={chartOption} />
