@@ -4,6 +4,7 @@ import { Col, Row } from "@douyinfe/semi-ui";
 import Overview from "./components/overview";
 import Activity from "./components/activity";
 import Payment from "./components/payment";
+import Record from "@/views/dashboard/components/record";
 
 const Dashboard = () => {
   const prefixCls = usePrefixCls("dashboard-workbench");
@@ -19,7 +20,9 @@ const Dashboard = () => {
             <Payment />
           </div>
         </Col>
-        <Col span={8}></Col>
+        <Col span={8}>
+          <Record />
+        </Col>
       </Row>
     </div>
   );
