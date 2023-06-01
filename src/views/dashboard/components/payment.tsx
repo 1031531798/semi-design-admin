@@ -8,7 +8,7 @@ const Payment = () => {
   function renderProgress() {
     const progress = [
       {
-        title: "Promotion Pay",
+        title: "广告支出",
         value: 400,
         total: 1000,
         icon: (
@@ -20,7 +20,7 @@ const Payment = () => {
         ),
       },
       {
-        title: "Software Pay",
+        title: "软件支出",
         value: 800,
         total: 1200,
         icon: (
@@ -32,7 +32,7 @@ const Payment = () => {
         ),
       },
       {
-        title: "Hardware Pay",
+        title: "硬件支出",
         value: 1200,
         total: 1800,
         icon: (
@@ -40,7 +40,7 @@ const Payment = () => {
         ),
       },
       {
-        title: "Total Pay",
+        title: "总支出",
         value: 2400,
         total: 4000,
         icon: (
@@ -67,7 +67,7 @@ const Payment = () => {
 
   return (
     <Card
-      title="Payment"
+      title="支出"
       className={"w-full flex flex-col flex-grow mt-5"}
       bordered={false}
       headerLine={false}

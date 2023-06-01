@@ -1,10 +1,10 @@
-import React, { createRef, LegacyRef, Suspense, useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import Header from "./components/header";
 import Sider from "./components/sider";
 import Footer from "./components/footer";
 import { Layout } from "@douyinfe/semi-ui";
 import { usePrefixCls } from "src/hook/useConfig";
-import { Outlet, useLocation, useOutlet } from "react-router-dom";
+import {  useLocation, useOutlet } from "react-router-dom";
 import PageLoading from "src/components/loading/pageLoading";
 import "./index.scss";
 import useUserStore from "../../store/user";

@@ -74,7 +74,7 @@ const HeaderTabs = () => {
       });
     }
     return () => {
-      tabsRef.current && unobserve();
+      unobserve();
     };
   }, [tabList]);
   const getTabList: TabProps[] = useMemo(() => {
