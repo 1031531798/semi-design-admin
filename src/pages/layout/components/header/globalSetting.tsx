@@ -25,16 +25,20 @@ const GlobalSetting = () => {
       </Tooltip>
       <SideSheet title={tooltipText} visible={visibleSetting} onCancel={toggleSetting}>
         <div className={itemClass}>
-          <Title heading={6}>是否显示面包屑</Title >
-          <Switch checked={platformSetting.showBreadcrumb} onChange={() => setPlatformSetting({showBreadcrumb: !platformSetting.showBreadcrumb})} />
-        </div>
-        <div className={itemClass}>
           <Title heading={6}>灰色模式</Title >
           <Switch checked={platformSetting.grayMode} onChange={greyChange} />
         </div>
         <div className={itemClass}>
           <Title heading={6}>色弱模式</Title >
           <Switch checked={platformSetting.weaknessMode} onChange={weaknessChange} />
+        </div>
+        <div className={itemClass}>
+          <Title heading={6}>是否显示面包屑</Title >
+          <Switch checked={platformSetting.showBreadcrumb} onChange={() => setPlatformSetting({showBreadcrumb: !platformSetting.showBreadcrumb})} />
+        </div>
+        <div className={itemClass}>
+          <Title heading={6}>过渡动画</Title >
+          <Switch checked={platformSetting.transition} onChange={() => setPlatformSetting({transition: !platformSetting.transition})} />
         </div>
       </SideSheet>
     </>

@@ -4,17 +4,19 @@ import Sider from "./components/sider";
 import Footer from "./components/footer";
 import { Layout } from "@douyinfe/semi-ui";
 import { usePrefixCls } from "src/hook/useConfig";
-import {  useLocation, useOutlet } from "react-router-dom";
+import {Outlet, useLocation, useOutlet} from "react-router-dom";
 import PageLoading from "src/components/loading/pageLoading";
 import "./index.scss";
 import useUserStore from "../../store/user";
 import { getUserDetailByToken } from "@/api/user";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
+import useSettingsStore from "@/store/settings";
 const { Content } = Layout;
 const LayoutIndex = () => {
   const prefixCls = usePrefixCls("layout");
   const { userInfo, setUserInfo } = useUserStore();
   const location = useLocation();
+  const {platformSetting} = useSettingsStore()
   const currentOutlet = useOutlet()
   function GetCurrentOutlet () {
     return useOutlet()
@@ -28,7 +30,7 @@ const LayoutIndex = () => {
       });
     }
   }, []);
-  function renderRoute() {
+  function renderTransitionRoute() {
     return (
       <>
         <SwitchTransition>
@@ -61,7 +63,7 @@ const LayoutIndex = () => {
         <Header />
         <Content className={`${prefixCls}-content overflow-x-hidden`}>
           <Suspense fallback={<PageLoading />}>
-            {renderRoute()}
+            {platformSetting.transition ? renderTransitionRoute() : <Outlet />}
           </Suspense>
         </Content>
         <Footer />
