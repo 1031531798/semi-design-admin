@@ -118,9 +118,9 @@ checkBrowsers(paths.appPath, isInteractive)
     devServer.startCallback(() => {
       if (isInteractive) {
         clearConsole();
-        // 打印本地服务地址
-        printInstructions();
       }
+      // 打印本地服务地址
+      printInstructions();
 
       if (env.raw.FAST_REFRESH && semver.lt(react.version, '16.10.0')) {
         console.log(
