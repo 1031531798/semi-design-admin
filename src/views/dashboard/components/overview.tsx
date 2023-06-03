@@ -107,7 +107,6 @@ const Overview = () => {
     <Card
       title="总览"
       className={"flex flex-col flex-grow h-1/2"}
-      bordered={false}
       headerLine={false}
       bodyStyle={{
         width: "100%",

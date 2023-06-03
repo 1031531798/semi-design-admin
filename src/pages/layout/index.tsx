@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import Header from "./components/header";
 import Sider from "./components/sider";
 import Footer from "./components/footer";
@@ -18,9 +18,6 @@ const LayoutIndex = () => {
   const location = useLocation();
   const {platformSetting} = useSettingsStore()
   const currentOutlet = useOutlet()
-  function GetCurrentOutlet () {
-    return useOutlet()
-  }
   useEffect(() => {
     // 如果用户信息为空 则获取用户详情
     if (!userInfo) {
@@ -48,7 +45,7 @@ const LayoutIndex = () => {
             appear
             unmountOnExit
           >
-            {() => <div className="route-view">
+            {() => <div className="route-view h-full">
               {currentOutlet}
             </div>}
           </CSSTransition>

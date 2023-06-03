@@ -90,14 +90,15 @@ const DashBoardRecord = (props: any) => {
     <Card
       title="账单"
       className={"w-full h-full flex flex-col flex-grow"}
-      bordered={false}
       headerLine={false}
       bodyStyle={{
+        display: 'flex',
+        flexGrow: 1,
         width: "100%",
-        height: "100%",
+        height: "0%",
       }}
     >
-      <InfiniteScroll loadMore={loadMore}>
+      <InfiniteScroll loadMore={loadMore} className={'w-full h-full overflow-y-auto'}>
         {renderList()}
       </InfiniteScroll>
     </Card>

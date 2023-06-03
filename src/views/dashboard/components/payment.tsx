@@ -69,7 +69,6 @@ const Payment = () => {
     <Card
       title="支出"
       className={"w-full flex flex-col flex-grow mt-5"}
-      bordered={false}
       headerLine={false}
       bodyStyle={{
         width: "100%",
