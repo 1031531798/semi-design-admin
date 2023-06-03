@@ -7,10 +7,7 @@ const PagesForm = () => {
     Section,
     Input,
     InputNumber,
-    AutoComplete,
     Select,
-    TreeSelect,
-    Cascader,
     DatePicker,
     TimePicker,
     TextArea,
@@ -66,7 +63,6 @@ const PagesForm = () => {
     },
   };
   const { initValues } = state;
-  const plainOptions = ['A', 'B', 'C'];
   const style = { width: '90%' };
   const treeData = [
     {
