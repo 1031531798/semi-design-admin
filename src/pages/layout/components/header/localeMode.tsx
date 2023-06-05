@@ -1,7 +1,7 @@
 import { IconLanguage } from "@douyinfe/semi-icons";
 import { Select } from "@douyinfe/semi-ui";
 import useStore from "../../../../store";
-import { isString } from "../../../../utils/is";
+import { isString } from "@/utils/is";
 
 const LocaleMode = () => {
   const setLocaleMode = useStore((state) => state.setLocaleMode);

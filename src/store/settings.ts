@@ -12,6 +12,7 @@ type PlatformSetting = {
   menuWidth: number;
   grayMode: boolean;
   weaknessMode: boolean;
+  transition: boolean;
   [key: string]: any;
 }
 
@@ -21,6 +22,7 @@ const useSettingsStore = create<SettingsStoreState>((set) => ({
     menuWidth: 200,
     grayMode: false,
     weaknessMode: false,
+    transition: true
   },
   setPlatformSetting: (info: Partial<PlatformSetting> = {}) => set((state) => ({ platformSetting: {...state.platformSetting, ...info} })),
 }))

@@ -77,7 +77,6 @@ const Activity = () => {
     <Card
       title="活跃"
       className={"w-full flex flex-col flex-grow mt-5 mr-5"}
-      bordered={false}
       headerLine={false}
       bodyStyle={{
         width: "100%",
