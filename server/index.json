@@ -3,5 +3,72 @@
     "userName": "admin",
     "password": "admin123",
     "userToken": "admin"
-  }
+  },
+  "deptData": [
+    {
+      "code": "01",
+      "name": "领导层",
+      "children": []
+    },
+    {
+      "code": "02",
+      "name": "采购部",
+      "children": [
+        {
+          "name": "化学材料组",
+          "code": "0201"
+        },
+        {
+          "name": "贵金属材料组",
+          "code": "0202"
+        }
+      ]
+    },
+    {
+      "code": "03",
+      "name": "运营部",
+      "children": [
+        {
+          "name": "运营中心",
+          "code": "0301"
+        },
+        {
+          "name": "后勤中心",
+          "code": "0302"
+        }
+      ]
+    },
+    {
+      "code": "04",
+      "name": "项目部",
+      "children": [
+        {
+          "name": "一组",
+          "code": "0401"
+        },
+        {
+          "name": "二组",
+          "code": "0402"
+        },
+        {
+          "name": "三组",
+          "code": "0403"
+        }
+      ]
+    },
+    {
+      "code": "05",
+      "name": "生产部",
+      "children": [
+        {
+          "name": "规划中心",
+          "code": "0501"
+        },
+        {
+          "name": "作业小组",
+          "code": "0502"
+        }
+      ]
+    }
+  ]
 }
