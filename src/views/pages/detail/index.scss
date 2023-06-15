@@ -1,0 +1,11 @@
+.#{$--prefixes}-pages-detail {
+  .description-form {
+    table {
+      width: 100%;
+      tbody {
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    }
+  }
+}

@@ -22,6 +22,7 @@ const Pages404 = () => {
           alt="back"
         />
       </map>
+      <h2>找不到页面</h2>
     </div>
   );
 };

@@ -52,20 +52,7 @@ const DashBoardRecord = (props: any) => {
       price: '4999',
       time: '2023-05-28 12:00:00'
     },
-    {
-      icon: <Avatar src={"https://www.fortress.com.hk/_ui/responsive/theme-ftrhk/images/ftrhk/brand/Sony.jpg"} />,
-      title: "SONY",
-      name: 'PS5 次世代游戏机',
-      price: '4999',
-      time: '2023-05-28 12:00:00'
-    },
-    {
-      icon: <Avatar src={"https://www.fortress.com.hk/_ui/responsive/theme-ftrhk/images/ftrhk/brand/Sony.jpg"} />,
-      title: "SONY",
-      name: 'PS5 次世代游戏机',
-      price: '4999',
-      time: '2023-05-28 12:00:00'
-    },
+
   ]
   function renderList () {
     return recordData.map((item) => {
